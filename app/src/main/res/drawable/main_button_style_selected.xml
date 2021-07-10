@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <layer-list>
+            <item>
+                <shape >
+                    <corners android:topLeftRadius="10dp" android:topRightRadius="10dp" />
+                    <stroke android:width="4dp" android:color="@color/item_button_select" />
+                    <solid android:color="@color/item_button_background" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+
+</selector>
