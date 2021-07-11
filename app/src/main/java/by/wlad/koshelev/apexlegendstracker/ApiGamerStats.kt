@@ -20,7 +20,6 @@ interface ApiGamerStats {
         @Query("TRN-Api-Key") apiKey: String = "a854565a-9a99-427d-b6aa-7e45be3713e2"
     ): _GamerStats
 
-
     companion object {
         fun create(): ApiGamerStats {
             val okHttpClient = OkHttpClient.Builder()
