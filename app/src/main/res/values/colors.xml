@@ -12,4 +12,7 @@
     <color name="item_button_default">#FFFFFF</color>
     <color name="item_button_select">#DD1111</color>
     <color name="item_button_background">#404040</color>
+
+
+    <color name="colorAccent">#399529</color>
 </resources>

@@ -5,10 +5,67 @@
     android:layout_height="match_parent"
     tools:context=".Frags.SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
+        android:id="@+id/MAIN"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="SEARCH" />
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/HEADER"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/nickName_edt_SearchFrag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/enter_nickName"
+                android:inputType="textPersonName" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/origin_checkBox_SearchFrag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/origin" />
+
+                <CheckBox
+                    android:id="@+id/psn_checkBox_SearchFrag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/playstation" />
+
+                <CheckBox
+                    android:id="@+id/xbox_checkBox_SearchFrag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/xbox" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/findGamer_btn_SerachFrag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/find" />
+
+            <LinearLayout
+                android:id="@+id/FOOTER"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical" />
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

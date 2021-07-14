@@ -1,4 +1,4 @@
-package by.wlad.koshelev.apexlegendstracker
+package by.wlad.koshelev.apexlegendstracker.GamerStats
 
 import by.wlad.koshelev.apexlegendstracker.GamerStats._GamerStats
 import okhttp3.OkHttpClient
@@ -9,7 +9,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
-interface ApiGamerStats {
+interface _ApiGamerStats {
 
 
     // https://public-api.tracker.gg/v2/apex/standard/profile/origin/XaXoLOL?TRN-Api-Key=a854565a-9a99-427d-b6aa-7e45be3713e2
@@ -21,7 +21,7 @@ interface ApiGamerStats {
     ): _GamerStats
 
     companion object {
-        fun create(): ApiGamerStats {
+        fun create(): _ApiGamerStats {
             val okHttpClient = OkHttpClient.Builder()
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)
@@ -32,7 +32,7 @@ interface ApiGamerStats {
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
                 .build()
-            return retrofit.create(ApiGamerStats::class.java)
+            return retrofit.create(_ApiGamerStats::class.java)
         }
     }
 }
