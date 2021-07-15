@@ -1,23 +1,22 @@
 package by.wlad.koshelev.apexlegendstracker.GamerStats
 
-import by.wlad.koshelev.apexlegendstracker.GamerStats._GamerStats
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.Path
-import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
 interface _ApiGamerStats {
 
 
     // https://public-api.tracker.gg/v2/apex/standard/profile/origin/XaXoLOL?TRN-Api-Key=a854565a-9a99-427d-b6aa-7e45be3713e2
+    @Headers("TRN-Api-Key: a854565a-9a99-427d-b6aa-7e45be3713e2")
     @GET("{platform}/{nickName}")
     suspend fun getGamerStats(
         @Path("platform") platform: String,
-        @Path("nickName") nickName: String,
-        @Query("TRN-Api-Key") apiKey: String = "a854565a-9a99-427d-b6aa-7e45be3713e2"
+        @Path("nickName") nickName: String
     ): _GamerStats
 
     companion object {

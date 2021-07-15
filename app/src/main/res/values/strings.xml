@@ -15,4 +15,9 @@
 
     <string name="error_nickname">Такого игрока нет. Проверьте данные. </string>
     <string name="error_inet">Ошибка подключения к сети</string>
+
+    <string name="level">ур.</string>
+    <string name="kills">Убийств: </string>
+    <string name="wins">Побед: </string>
+    <string name="top3">Топ3: </string>
 </resources>

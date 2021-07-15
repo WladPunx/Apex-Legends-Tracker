@@ -11,13 +11,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // включение моей БД
         GamerStatsDataBase.create(this)
 
         VM.vm = ViewModelProvider(this).get(VM::class.java)
 
-
         // дизайн и навигация основных кнопок управления Фрагментами
         NavigateButton.create(this)
+
+        //TODO временный блок!!
+        VM.vm.getGms("origin", "tonyd221")
 
 
     }
