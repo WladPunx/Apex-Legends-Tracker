@@ -9,13 +9,17 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
 import by.wlad.koshelev.apexlegendstracker.CheckBoxFromSearchFrag
 import by.wlad.koshelev.apexlegendstracker.GamerStats.Segment
 import by.wlad.koshelev.apexlegendstracker.GamerStats._GamerStats
+import by.wlad.koshelev.apexlegendstracker.LegendsAdapter
 import by.wlad.koshelev.apexlegendstracker.R
 import by.wlad.koshelev.apexlegendstracker.SetImgFromInet
 import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 
 
 class SearchFragment : Fragment() {
@@ -51,70 +55,88 @@ class SearchFragment : Fragment() {
          * слушатель на данные из инета
          */
         VM.vm.gmsInet.observe(viewLifecycleOwner, Observer {
-            if (VM.vm.gmsInet.value != null) {
+            MainScope().launch {
+                if (VM.vm.gmsInet.value != null) {
 
-                // АПИШка ппц какая кривая. не у всех игроков могут быть одни и теже данные.
-                // поэтому будет оборачиватье в Try-Catch обращение к Массивам со статой
+                    // АПИШка ппц какая кривая. не у всех игроков могут быть одни и теже данные.
+                    // поэтому будет оборачиватье в Try-Catch обращение к Массивам со статой
 
-                // данные статистики. все + общие из LifeTime
-                val curentStats: _GamerStats = VM.vm.gmsInet.value!!
-                val _lifeTimeStat: MutableList<Segment> = curentStats.data.segments.filter { it.metadata.name == "Lifetime" }.toMutableList()
-                val lifeTimeStat: Segment = _lifeTimeStat[0]
+                    // данные статистики. все + общие из LifeTime
+                    val curentStats: _GamerStats = VM.vm.gmsInet.value!!
+                    val _lifeTimeStat: MutableList<Segment> = curentStats.data.segments
+                        .asSequence()
+                        .filter { it.metadata.name == "Lifetime" }
+                        .toMutableList()
+                    val lifeTimeStat: Segment = _lifeTimeStat[0]
+
+                    /**
+                     * СТАТАЫ КАЖДОЙ ЛЕГЕНДЫ
+                     */
+                    val legendsList: MutableList<Segment> = curentStats.data.segments
+                        .asSequence()
+                        .filter { it.metadata.name != "Lifetime" }
+                        .toMutableList()
+                    legendsRecycler.layoutManager = GridLayoutManager(activity, 1)
+                    legendsRecycler.adapter = LegendsAdapter(activity as AppCompatActivity, legendsList)
+
+                    /**
+                     * ОБЩАЯ СТАТА АККА
+                     */
 
 
-                // имя и платформа
-                gamerName_tx_SerachFrag.setText("${curentStats.data.platformInfo.platformUserId}")
-                platform_tx_SerachFrag.setText("${curentStats.data.platformInfo.platformSlug}")
+                    // имя и платформа
+                    gamerName_tx_SerachFrag.setText("${curentStats.data.platformInfo.platformUserId}")
+                    platform_tx_SerachFrag.setText("${curentStats.data.platformInfo.platformSlug}")
 
-                // аватар
-                SetImgFromInet.set(curentStats.data.platformInfo.avatarUrl, avatar_img_SerachFrag)
+                    // аватар
+                    SetImgFromInet.set(curentStats.data.platformInfo.avatarUrl, avatar_img_SerachFrag)
 
-                // ранг
-                try {
-                    SetImgFromInet.set(lifeTimeStat.stats.rankScore.metadata.iconUrl, rank_img_SerachFrag)
-                } catch (e: Exception) {
+                    // ранг
+                    try {
+                        SetImgFromInet.set(lifeTimeStat.stats.rankScore.metadata.iconUrl, rank_img_SerachFrag)
+                    } catch (e: Exception) {
+                    }
+
+
+                    // уровень акка
+                    try {
+                        level_txt_SerachFrag.setText(
+                            "${lifeTimeStat.stats.level.displayValue} ${
+                                getString(
+                                    R.string.level
+                                )
+                            }"
+                        )
+                    } catch (e: Exception) {
+                        level_txt_SerachFrag.setText("n/a ${getString(R.string.level)}")
+                    }
+
+
+                    //  убийства
+                    try {
+                        kills_txt_SerachFrag.setText("${getString(R.string.kills)} ${lifeTimeStat.stats.kills.displayValue}")
+                    } catch (ex: java.lang.Exception) {
+                        kills_txt_SerachFrag.setText("${getString(R.string.kills)} n/a")
+                    }
+
+                    // победы
+                    try {
+                        wins_txt_SerachFrag.setText("${getString(R.string.wins)}  ${lifeTimeStat.stats.winsWithFullSquad.displayValue}")
+                    } catch (ex: java.lang.Exception) {
+                        wins_txt_SerachFrag.setText("${getString(R.string.wins)} n/a")
+                    }
+
+
+                    // топ3
+                    try {
+                        top3_txt_SerachFrag.setText("${getString(R.string.top3)}  ${lifeTimeStat.stats.timesPlacedtop3.displayValue}")
+                    } catch (ex: java.lang.Exception) {
+                        top3_txt_SerachFrag.setText("${getString(R.string.top3)}  n/a")
+                    }
+
+
                 }
-
-
-                // уровень акка
-                try {
-                    level_txt_SerachFrag.setText(
-                        "${lifeTimeStat.stats.level.displayValue} ${
-                            getString(
-                                R.string.level
-                            )
-                        }"
-                    )
-                } catch (e: Exception) {
-                    level_txt_SerachFrag.setText("n/a ${getString(R.string.level)}")
-                }
-
-
-                //  убийства
-                try {
-                    kills_txt_SerachFrag.setText("${getString(R.string.kills)} ${lifeTimeStat.stats.kills.displayValue}")
-                } catch (ex: java.lang.Exception) {
-                    kills_txt_SerachFrag.setText("${getString(R.string.kills)} n/a")
-                }
-
-                // победы
-                try {
-                    wins_txt_SerachFrag.setText("${getString(R.string.wins)}  ${lifeTimeStat.stats.winsWithFullSquad.displayValue}")
-                } catch (ex: java.lang.Exception) {
-                    wins_txt_SerachFrag.setText("${getString(R.string.wins)} n/a")
-                }
-
-
-                // топ3
-                try {
-                    top3_txt_SerachFrag.setText("${getString(R.string.top3)}  ${lifeTimeStat.stats.timesPlacedtop3.displayValue}")
-                } catch (ex: java.lang.Exception) {
-                    top3_txt_SerachFrag.setText("${getString(R.string.top3)}  n/a")
-                }
-
-
             }
-
         })
 
 
