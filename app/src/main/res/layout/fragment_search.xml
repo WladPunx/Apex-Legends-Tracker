@@ -37,21 +37,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/origin" />
+                    android:gravity="center"
+                    android:text="@string/origin"
+                    android:theme="@style/origin_CheckBox" />
 
                 <CheckBox
                     android:id="@+id/psn_checkBox_SearchFrag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/playstation" />
+                    android:gravity="center"
+                    android:text="@string/playstation"
+                    android:theme="@style/playStaion_CheckBox" />
 
                 <CheckBox
                     android:id="@+id/xbox_checkBox_SearchFrag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/xbox" />
+                    android:gravity="center"
+                    android:text="@string/xbox"
+                    android:theme="@style/xbox_CheckBox" />
             </LinearLayout>
 
             <Button

@@ -1,6 +1,7 @@
 package by.wlad.koshelev.apexlegendstracker
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
@@ -35,10 +36,23 @@ object CheckBoxFromSearchFrag {
             app.psn_checkBox_SearchFrag.isChecked = false
             app.xbox_checkBox_SearchFrag.isChecked = false
 
+            app.origin_checkBox_SearchFrag.setTextColor(ContextCompat.getColor(app, R.color.default_checkBox))
+            app.psn_checkBox_SearchFrag.setTextColor(ContextCompat.getColor(app, R.color.default_checkBox))
+            app.xbox_checkBox_SearchFrag.setTextColor(ContextCompat.getColor(app, R.color.default_checkBox))
+
             when (VM.vm.platformName.value) {
-                ORIGIN -> app.origin_checkBox_SearchFrag.isChecked = true
-                PSN -> app.psn_checkBox_SearchFrag.isChecked = true
-                XBOX -> app.xbox_checkBox_SearchFrag.isChecked = true
+                ORIGIN -> {
+                    app.origin_checkBox_SearchFrag.isChecked = true
+                    app.origin_checkBox_SearchFrag.setTextColor(ContextCompat.getColor(app, R.color.origin))
+                }
+                PSN -> {
+                    app.psn_checkBox_SearchFrag.isChecked = true
+                    app.psn_checkBox_SearchFrag.setTextColor(ContextCompat.getColor(app, R.color.playstaion))
+                }
+                XBOX -> {
+                    app.xbox_checkBox_SearchFrag.isChecked = true
+                    app.xbox_checkBox_SearchFrag.setTextColor(ContextCompat.getColor(app, R.color.xbox))
+                }
             }
         })
 

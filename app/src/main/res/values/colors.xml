@@ -17,4 +17,11 @@
 
 
     <color name="colorAccent">#399529</color>
+
+
+    <color name="origin">#f87a10</color>
+    <color name="playstaion">#195BB1</color>
+    <color name="xbox">#107c10</color>
+    <color name="default_checkBox">#FFFFFF</color>
+
 </resources>

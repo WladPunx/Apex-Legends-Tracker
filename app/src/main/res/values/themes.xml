@@ -20,4 +20,18 @@
 
         <item name="android:textSize">21sp</item>
     </style>
+
+
+    <style name="origin_CheckBox" parent="Theme.ApexLegendsTracker">
+        <item name="colorAccent">@color/origin</item>
+    </style>
+
+    <style name="playStaion_CheckBox" parent="Theme.ApexLegendsTracker">
+        <item name="colorAccent">@color/playstaion</item>
+    </style>
+
+    <style name="xbox_CheckBox" parent="Theme.ApexLegendsTracker">
+        <item name="colorAccent">@color/xbox</item>
+    </style>
+
 </resources>
