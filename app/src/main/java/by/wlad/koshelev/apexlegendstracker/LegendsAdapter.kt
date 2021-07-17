@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import by.wlad.koshelev.apexlegendstracker.GamerStats.Segment
 
@@ -20,6 +21,8 @@ class LegendsAdapter(
         val name: TextView = itemV.findViewById(R.id.nameLegends_tx_itemLegends)
         val kills: TextView = itemV.findViewById(R.id.kills_tx_itemLegends)
         var wins: TextView = itemV.findViewById(R.id.wins_tx_itemLegends)
+        val skull: ImageView = itemV.findViewById(R.id.iconSkull_itemLegends)
+        val icWins: ImageView = itemV.findViewById(R.id.icWinner_itemLegends)
 
     }
 
@@ -38,10 +41,8 @@ class LegendsAdapter(
         val a: Segment = arr[position]
 
         // инока легенды
-        try {
-            SetImgFromInet.set(a.metadata.imageUrl, holder.iconLigends)
-        } catch (e: Exception) {
-        }
+        SetImgFromInet.set(a.metadata.imageUrl, holder.iconLigends)
+
 
         // имя легенды
         try {
@@ -55,6 +56,8 @@ class LegendsAdapter(
             holder.kills.setText("${a.stats.kills.displayValue}")
         } catch (e: Exception) {
             holder.kills.setText("n/a")
+            holder.kills.setTextColor(ContextCompat.getColor(app, R.color.legends_item_null))
+            holder.skull.alpha = 0.2f
         }
 
 
@@ -63,6 +66,8 @@ class LegendsAdapter(
             holder.wins.setText("${a.stats.winsWithFullSquad.displayValue}")
         } catch (e: Exception) {
             holder.wins.setText("n/a")
+            holder.wins.setTextColor(ContextCompat.getColor(app, R.color.legends_item_null))
+            holder.icWins.alpha = 0.2f
         }
 
     }

@@ -92,10 +92,7 @@ class SearchFragment : Fragment() {
                     SetImgFromInet.set(curentStats.data.platformInfo.avatarUrl, avatar_img_SerachFrag)
 
                     // ранг
-                    try {
-                        SetImgFromInet.set(lifeTimeStat.stats.rankScore.metadata.iconUrl, rank_img_SerachFrag)
-                    } catch (e: Exception) {
-                    }
+                    SetImgFromInet.set(lifeTimeStat.stats.rankScore.metadata.iconUrl, rank_img_SerachFrag)
 
 
                     // уровень акка
