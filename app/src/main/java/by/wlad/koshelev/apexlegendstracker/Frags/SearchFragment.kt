@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import java.util.*
 
 
 class SearchFragment : Fragment() {
@@ -64,6 +65,29 @@ class SearchFragment : Fragment() {
             }
         }
 
+        /**
+         * кнопка сохранения игрока
+         */
+        saveGamer_btn_SearchFrag.setOnClickListener {
+            statsScope.launch {
+                if (VM.vm.gmsInet.value != null) {
+                    VM.vm.saveGamer(VM.vm.gmsInet.value!!)
+                }
+            }
+        }
+
+
+        /**
+         * слушатель на "последняя дата сохранения"
+         */
+        VM.vm.gmsLocal.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                saverStatus_txt_SearchFrag.setText("${coolDate(it)}")
+            } else {
+                saverStatus_txt_SearchFrag.setText("")
+            }
+        })
+
 
         /**
          * слушатель статуса загрузки
@@ -86,7 +110,7 @@ class SearchFragment : Fragment() {
          */
         VM.vm.gmsInet.observe(viewLifecycleOwner, Observer {
             statsScope.launch {
-                if (VM.vm.gmsInet.value != null) {
+                if (it != null) {
 
                     /**
                      * основной слушатель изменений для текущего Фрагмента
@@ -119,10 +143,28 @@ class SearchFragment : Fragment() {
     }
 
 
-    // спрятать клаву
+    /**
+     * спрятать клаву
+     */
     private fun View.hideKeyboard() {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(windowToken, 0)
+    }
+
+
+    /**
+     * установка красивой даты последнего сохранения
+     */
+    private fun coolDate(it: _GamerStats): String {
+        val currentDate: Date = Date()
+        val oldDate: Date = Date(it.dateInfo.toLong())
+        val minutes = currentDate.minutes - oldDate.minutes
+        val hours = currentDate.hours - oldDate.hours
+        val day = currentDate.day - oldDate.day
+
+        return if (minutes < 60) "${minutes} ${getString(R.string.minutes)}"
+        else if (hours < 24) "${hours} ${getString(R.string.hours)}"
+        else "${day} ${getString(R.string.day)}"
     }
 
 
@@ -161,7 +203,6 @@ class SearchFragment : Fragment() {
 
         // имя и платформа и цвет
         gamerName_tx_SerachFrag.setText("${curentStats.data.platformInfo.platformUserId}")
-
         when (curentStats.data.platformInfo.platformSlug) {
             "origin" -> {
                 gamerName_tx_SerachFrag.setTextColor(

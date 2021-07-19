@@ -21,13 +21,16 @@ class VM(private val apl: Application) : AndroidViewModel(apl) {
     var platformName: MutableLiveData<String> = MutableLiveData("origin") // платформа ЧекБоксов
     var gmsInet: MutableLiveData<_GamerStats> = MutableLiveData(null) // текущий игрок из инета
     var loadFlag: MutableLiveData<Boolean> = MutableLiveData(false) // статус загрузки
+    var gmsLocal: MutableLiveData<_GamerStats> = MutableLiveData(null)
 
 
     suspend fun getGms(platform: String, nickName: String) = withContext(Dispatchers.Default) {
         loadFlag.postValue(true)
 
         gmsInet.postValue(null)
+        gmsLocal.postValue(null)
 
+        gmsLocal.postValue(getLocalGamer("${nickName}_${platform}"))
         gmsInet.postValue(getGmsFromInet(platform, nickName))
 
         if (loadFlag.value != null) loadFlag.postValue(false)
@@ -38,7 +41,16 @@ class VM(private val apl: Application) : AndroidViewModel(apl) {
     private suspend fun getGmsFromInet(platform: String, nickName: String): _GamerStats? = withContext(Dispatchers.IO) {
         val ret: _GamerStats? = remoteModel.getGmsFromInet(platform, nickName)
         if (ret == null) loadFlag.postValue(null)
-        return@withContext remoteModel.getGmsFromInet(platform, nickName)
+        return@withContext ret
+    }
+
+    private suspend fun getLocalGamer(id: String): _GamerStats = withContext(Dispatchers.IO) {
+        return@withContext localModel.getLocalGamer(id)
+    }
+
+    suspend fun saveGamer(gamer: _GamerStats) = withContext(Dispatchers.IO) {
+        localModel.saveGamer(gamer)
+        gmsLocal.postValue(getLocalGamer(gamer.primKey))
     }
 
 }

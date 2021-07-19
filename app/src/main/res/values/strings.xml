@@ -6,6 +6,11 @@
 
     <string name="enter_nickName">Никнейм игрока</string>
     <string name="find">Найти</string>
+    <string name="save">Сохранить</string>
+
+    <string name="minutes">мин.</string>
+    <string name="hours">ч.</string>
+    <string name="day">дн.</string>
 
     <string name="origin">Origin</string>
     <string name="playstation">Playstation</string>

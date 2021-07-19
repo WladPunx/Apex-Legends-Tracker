@@ -17,6 +17,7 @@ class RemoteModel(private val apl: Application) {
 
                 withContext(Dispatchers.IO) {
                     ret = _ApiGamerStats.create().getGamerStats(platform, nickName)
+                    ret?.inz()
                 }
 
 
