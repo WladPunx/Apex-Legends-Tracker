@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
 import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStatsDataBase
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +22,10 @@ class MainActivity : AppCompatActivity() {
         NavigateButton.create(this)
 
         //TODO временный блок!!
-        VM.vm.getGms("origin", "tonyd221")
+        MainScope().launch {
+            VM.vm.getGms("origin", "tonyd221")
+        }
+
 
 
     }

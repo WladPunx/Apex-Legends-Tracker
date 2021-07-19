@@ -23,7 +23,9 @@ class RemoteModel(private val apl: Application) {
             } catch (ex: retrofit2.HttpException) {
                 Toast.makeText(
                     apl,
-                    "${platform} : ${nickName} \n ${apl.getString(R.string.error_nickname)} ",
+                    "${platform} : ${nickName}" +
+                            "\n" +
+                            "${apl.getString(R.string.error_nickname)} ",
                     Toast.LENGTH_SHORT
                 ).show()
 

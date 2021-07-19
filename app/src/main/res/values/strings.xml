@@ -5,13 +5,14 @@
 
 
     <string name="enter_nickName">Никнейм игрока</string>
-
+    <string name="find">Найти</string>
 
     <string name="origin">Origin</string>
     <string name="playstation">Playstation</string>
     <string name="xbox">XBox</string>
 
-    <string name="find">Найти</string>
+    <string name="load_status">Загрузка...</string>
+    <string name="load_error">Упс... Ошибка!</string>
 
     <string name="error_nickname">Такого игрока нет. Проверьте данные. </string>
     <string name="error_inet">Ошибка подключения к сети</string>

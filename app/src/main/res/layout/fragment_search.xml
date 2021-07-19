@@ -22,14 +22,18 @@
                 android:id="@+id/nickName_edt_SearchFrag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:ems="10"
                 android:gravity="center"
                 android:hint="@string/enter_nickName"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:text="daltoosh"
+                android:textSize="28sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:orientation="horizontal">
 
                 <CheckBox
@@ -37,7 +41,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
                     android:text="@string/origin"
                     android:theme="@style/origin_CheckBox" />
 
@@ -64,22 +67,40 @@
                 android:id="@+id/findGamer_btn_SerachFrag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/find_button_style"
                 android:text="@string/find" />
+
+            <TextView
+                android:id="@+id/loads_status_txt_SearchFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/load_status"
+                android:visibility="invisible"
+                tools:visibility="visible" />
 
             <LinearLayout
                 android:id="@+id/StatsLayout_SearcgFrag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="100dp"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/avatar_img_SerachFrag"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:padding="10dp"
@@ -90,33 +111,25 @@
                         app:layout_constraintTop_toTopOf="parent"
                         tools:src="@tools:sample/avatars" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <TextView
-                            android:id="@+id/platform_tx_SerachFrag"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:maxLines="1"
-                            android:text="asdddasd"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            app:autoSizeTextType="uniform"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/gamerName_tx_SerachFrag"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
+                            android:layout_weight="2"
+                            android:gravity="bottom|center"
                             android:maxLines="1"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:shadowColor="@color/white"
+                            android:shadowDx="4"
+                            android:shadowDy="4"
+                            android:shadowRadius="3"
                             android:text="ttsdf"
                             android:textSize="35sp"
                             android:textStyle="bold"
@@ -125,11 +138,24 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/platform_tx_SerachFrag" />
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/level_txt_SerachFrag"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center|top"
+                            android:maxLines="1"
+                            android:shadowColor="@color/white"
+                            android:shadowRadius="8"
+                            android:text="@string/level"
+                            android:textColor="@color/legends_name_shadow"
+                            android:textSize="29sp"
+                            app:autoSizeTextType="uniform" />
+                    </LinearLayout>
 
                     <ImageView
                         android:id="@+id/rank_img_SerachFrag"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:scaleType="fitCenter"
@@ -142,43 +168,47 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/level_txt_SerachFrag"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:maxLines="1"
-                    android:text="@string/level"
-                    android:textSize="29sp"
-                    app:autoSizeTextType="uniform" />
-
-                <TextView
                     android:id="@+id/kills_txt_SerachFrag"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
                     android:gravity="center"
                     android:maxLines="1"
+                    android:shadowColor="@color/red"
+                    android:shadowRadius="10"
                     android:text="@string/kills"
-                    android:textSize="29sp"
+                    android:textSize="35sp"
                     app:autoSizeTextType="uniform" />
 
                 <TextView
                     android:id="@+id/wins_txt_SerachFrag"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
                     android:gravity="center"
                     android:maxLines="1"
+                    android:shadowColor="@color/red"
+                    android:shadowRadius="10"
                     android:text="@string/wins"
-                    android:textSize="29sp"
+                    android:textSize="35sp"
                     app:autoSizeTextType="uniform" />
 
                 <TextView
                     android:id="@+id/top3_txt_SerachFrag"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
                     android:gravity="center"
                     android:maxLines="1"
+                    android:shadowColor="@color/red"
+                    android:shadowRadius="10"
                     android:text="@string/top3"
-                    android:textSize="29sp"
+                    android:textSize="35sp"
                     app:autoSizeTextType="uniform" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -194,7 +224,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="100dp"
                 android:gravity="center"
-                android:orientation="vertical"/>
+                android:orientation="vertical" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

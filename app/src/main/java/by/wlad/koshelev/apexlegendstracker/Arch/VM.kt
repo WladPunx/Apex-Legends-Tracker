@@ -4,9 +4,9 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import by.wlad.koshelev.apexlegendstracker.GamerStats._GamerStats
-import kotlinx.coroutines.CoroutineScope
+import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class VM(private val apl: Application) : AndroidViewModel(apl) {
@@ -18,20 +18,27 @@ class VM(private val apl: Application) : AndroidViewModel(apl) {
     private val remoteModel: RemoteModel = RemoteModel(apl)
 
 
-    var platformName: MutableLiveData<String> = MutableLiveData("origin")
+    var platformName: MutableLiveData<String> = MutableLiveData("origin") // платформа ЧекБоксов
+    var gmsInet: MutableLiveData<_GamerStats> = MutableLiveData(null) // текущий игрок из инета
+    var loadFlag: MutableLiveData<Boolean> = MutableLiveData(false) // статус загрузки
 
-    var gmsInet: MutableLiveData<_GamerStats> = MutableLiveData(null)
 
+    suspend fun getGms(platform: String, nickName: String) = withContext(Dispatchers.Default) {
+        loadFlag.postValue(true)
 
-    fun getGms(platform: String, nickName: String) {
-        getGmsFromInet(platform, nickName)
+        gmsInet.postValue(null)
+
+        gmsInet.postValue(getGmsFromInet(platform, nickName))
+
+        if (loadFlag.value != null) loadFlag.postValue(false)
+
     }
 
 
-    private fun getGmsFromInet(platform: String, nickName: String) {
-        CoroutineScope(Dispatchers.IO).launch {
-            gmsInet.postValue(remoteModel.getGmsFromInet(platform, nickName))
-        }
+    private suspend fun getGmsFromInet(platform: String, nickName: String): _GamerStats? = withContext(Dispatchers.IO) {
+        val ret: _GamerStats? = remoteModel.getGmsFromInet(platform, nickName)
+        if (ret == null) loadFlag.postValue(null)
+        return@withContext remoteModel.getGmsFromInet(platform, nickName)
     }
 
 }

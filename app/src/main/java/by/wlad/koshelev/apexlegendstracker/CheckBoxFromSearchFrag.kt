@@ -1,5 +1,6 @@
 package by.wlad.koshelev.apexlegendstracker
 
+import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -42,20 +43,24 @@ object CheckBoxFromSearchFrag {
 
             when (VM.vm.platformName.value) {
                 ORIGIN -> {
-                    app.origin_checkBox_SearchFrag.isChecked = true
-                    app.origin_checkBox_SearchFrag.setTextColor(ContextCompat.getColor(app, R.color.origin))
+                    setColorCheckBox(app, app.origin_checkBox_SearchFrag, R.color.origin)
                 }
                 PSN -> {
-                    app.psn_checkBox_SearchFrag.isChecked = true
-                    app.psn_checkBox_SearchFrag.setTextColor(ContextCompat.getColor(app, R.color.playstaion))
+                    setColorCheckBox(app, app.psn_checkBox_SearchFrag, R.color.playstaion)
                 }
                 XBOX -> {
-                    app.xbox_checkBox_SearchFrag.isChecked = true
-                    app.xbox_checkBox_SearchFrag.setTextColor(ContextCompat.getColor(app, R.color.xbox))
+                    setColorCheckBox(app, app.xbox_checkBox_SearchFrag, R.color.xbox)
                 }
             }
         })
 
+    }
+
+
+    private fun setColorCheckBox(app: AppCompatActivity, view: CheckBox, color: Int) {
+        view.isChecked = true
+        view.setTextColor(ContextCompat.getColor(app, color))
+        app.nickName_edt_SearchFrag.setTextColor(ContextCompat.getColor(app, color))
     }
 
 

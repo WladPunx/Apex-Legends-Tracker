@@ -20,7 +20,7 @@ class LegendsAdapter(
         val iconLigends: ImageView = itemV.findViewById(R.id.iconLegends_itemLegends)
         val name: TextView = itemV.findViewById(R.id.nameLegends_tx_itemLegends)
         val kills: TextView = itemV.findViewById(R.id.kills_tx_itemLegends)
-        var wins: TextView = itemV.findViewById(R.id.wins_tx_itemLegends)
+        val wins: TextView = itemV.findViewById(R.id.wins_tx_itemLegends)
         val skull: ImageView = itemV.findViewById(R.id.iconSkull_itemLegends)
         val icWins: ImageView = itemV.findViewById(R.id.icWinner_itemLegends)
 
