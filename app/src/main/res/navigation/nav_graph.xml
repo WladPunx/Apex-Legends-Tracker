@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/listsFragment"
-        android:name="by.wlad.koshelev.apexlegendstracker.Frags.ListsFragment"
+        android:name="by.wlad.koshelev.apexlegendstracker.UI.ListsFrag.ListsFragment"
         android:label="fragment_lists"
         tools:layout="@layout/fragment_lists" />
     <fragment

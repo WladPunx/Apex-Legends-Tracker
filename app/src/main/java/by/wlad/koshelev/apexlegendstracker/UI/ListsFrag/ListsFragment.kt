@@ -1,4 +1,4 @@
-package by.wlad.koshelev.apexlegendstracker.Frags
+package by.wlad.koshelev.apexlegendstracker.UI.ListsFrag
 
 import android.os.Bundle
 import android.view.LayoutInflater
