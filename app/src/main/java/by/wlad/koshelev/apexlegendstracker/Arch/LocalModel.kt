@@ -11,14 +11,25 @@ class LocalModel {
         return@withContext GamerStatsDataBase.dao.getGamer(id)
     }
 
-
     suspend fun saveGamer(gamer: _GamerStats) = withContext(Dispatchers.IO) {
         try {
             GamerStatsDataBase.dao.addNew(gamer)
         } catch (ex: Exception) {
             GamerStatsDataBase.dao.update(gamer)
         }
+    }
 
+    suspend fun getAllGamers(): MutableList<_GamerStats> = withContext(Dispatchers.IO) {
+        return@withContext GamerStatsDataBase.dao.getAllGamers()
+    }
+
+    suspend fun deleteOneGamer(gamer: _GamerStats) = withContext(Dispatchers.IO) {
+        GamerStatsDataBase.dao.deleteOne(gamer)
+    }
+
+
+    suspend fun dellAllGamers() = withContext(Dispatchers.IO){
+        GamerStatsDataBase.dao.dellAll()
     }
 
 

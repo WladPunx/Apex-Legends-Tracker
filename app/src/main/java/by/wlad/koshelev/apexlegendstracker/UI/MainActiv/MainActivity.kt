@@ -17,16 +17,20 @@ class MainActivity : AppCompatActivity() {
         // включение моей БД
         GamerStatsDataBase.create(this)
 
+        // поключение ViewModel
         VM.vm = ViewModelProvider(this).get(VM::class.java)
 
         // дизайн и навигация основных кнопок управления Фрагментами
         NavigateButton.create(this)
 
+        MainScope().launch {
+            VM.vm.getAllGamers()
+        }
+
         //TODO временный блок!!
         MainScope().launch {
             VM.vm.getGms("origin", "tonyd221")
         }
-
 
 
     }

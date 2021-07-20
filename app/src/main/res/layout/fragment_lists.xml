@@ -18,6 +18,12 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <Button
+                android:id="@+id/clearBD_btn_ListsFrag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Button" />
+
             <LinearLayout
                 android:id="@+id/FOOTER"
                 android:layout_width="match_parent"

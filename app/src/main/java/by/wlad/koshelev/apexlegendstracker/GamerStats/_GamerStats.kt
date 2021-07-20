@@ -28,11 +28,14 @@ interface StatsDAO {
     @Update
     suspend fun update(a: _GamerStats)
 
+    @Delete
+    suspend fun deleteOne(a: _GamerStats)
+
     @Query("delete from gamer_stats_table")
     suspend fun dellAll()
 
     @Query("select * from gamer_stats_table")
-    suspend fun getAll(): MutableList<_GamerStats>
+    suspend fun getAllGamers(): MutableList<_GamerStats>
 
     @Query("select * from gamer_stats_table where primKey like :id")
     suspend fun getGamer(id: String): _GamerStats
@@ -51,7 +54,7 @@ abstract class GamerStatsDataBase : RoomDatabase() {
             bd = Room.databaseBuilder(
                 app,
                 GamerStatsDataBase::class.java,
-                "gamer_stats_bd"
+                "gamer_stats_bd_1"
             )
                 .build()
 

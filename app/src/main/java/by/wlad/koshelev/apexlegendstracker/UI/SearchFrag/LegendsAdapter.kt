@@ -30,7 +30,7 @@ class LegendsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
         val infalter = LayoutInflater.from(parent.context)
-        val itemView = infalter.inflate(R.layout.legends_item, parent, false)
+        val itemView = infalter.inflate(R.layout.item_legends, parent, false)
         val holder = MyHolder(itemView)
         return holder
     }
