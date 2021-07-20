@@ -1,4 +1,4 @@
-package by.wlad.koshelev.apexlegendstracker
+package by.wlad.koshelev.apexlegendstracker.UI.SearchFrag
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import by.wlad.koshelev.apexlegendstracker.GamerStats.Segment
+import by.wlad.koshelev.apexlegendstracker.R
+import by.wlad.koshelev.apexlegendstracker.UI.SetImgFromInet
 
 class LegendsAdapter(
     var app: AppCompatActivity,

@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ApexLegendsTracker">
         <activity
-            android:name=".MainActivity"
+            android:name="by.wlad.koshelev.apexlegendstracker.UI.MainActiv.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

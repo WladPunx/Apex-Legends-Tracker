@@ -11,6 +11,7 @@
     <string name="minutes">мин.</string>
     <string name="hours">ч.</string>
     <string name="day">дн.</string>
+    <string name="ago">назад</string>
 
     <string name="origin">Origin</string>
     <string name="playstation">Playstation</string>

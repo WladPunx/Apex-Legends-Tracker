@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Frags.SearchFragment">
+    tools:context=".UI.SearchFrag.SearchFragment">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/MAIN"
@@ -95,25 +95,6 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/saveGamer_btn_SearchFrag"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/save" />
-
-                    <TextView
-                        android:id="@+id/saverStatus_txt_SearchFrag"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:orientation="horizontal">
 
@@ -186,13 +167,33 @@
 
                 </LinearLayout>
 
+                <Button
+                    android:id="@+id/saveGamer_btn_SearchFrag"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/find_button_style"
+                    android:gravity="center"
+                    android:text="@string/save"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/saverStatus_txt_SearchFrag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    android:text="45 мин. назад"
+                    android:textSize="17sp" />
+
                 <TextView
                     android:id="@+id/kills_txt_SerachFrag"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginBottom="5dp"

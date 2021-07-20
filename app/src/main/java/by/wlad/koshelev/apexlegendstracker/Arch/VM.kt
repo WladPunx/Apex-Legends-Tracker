@@ -24,23 +24,23 @@ class VM(private val apl: Application) : AndroidViewModel(apl) {
     var gmsLocal: MutableLiveData<_GamerStats> = MutableLiveData(null)
 
 
-    suspend fun getGms(platform: String, nickName: String) = withContext(Dispatchers.Default) {
-        loadFlag.postValue(true)
+    suspend fun getGms(platform: String, nickName: String) = withContext(Dispatchers.Main) {
+        loadFlag.value = true
 
-        gmsInet.postValue(null)
-        gmsLocal.postValue(null)
+        gmsInet.value = null
+        gmsLocal.value = null
 
-        gmsLocal.postValue(getLocalGamer("${nickName}_${platform}"))
-        gmsInet.postValue(getGmsFromInet(platform, nickName))
+        gmsLocal.value = getLocalGamer("${nickName}_${platform}")
+        gmsInet.value = getGmsFromInet(platform, nickName)
 
-        if (loadFlag.value != null) loadFlag.postValue(false)
+        if (loadFlag.value != null) loadFlag.value = false
 
     }
 
 
-    private suspend fun getGmsFromInet(platform: String, nickName: String): _GamerStats? = withContext(Dispatchers.IO) {
+    private suspend fun getGmsFromInet(platform: String, nickName: String): _GamerStats? = withContext(Dispatchers.Main) {
         val ret: _GamerStats? = remoteModel.getGmsFromInet(platform, nickName)
-        if (ret == null) loadFlag.postValue(null)
+        if (ret == null) loadFlag.value = null
         return@withContext ret
     }
 
@@ -48,9 +48,9 @@ class VM(private val apl: Application) : AndroidViewModel(apl) {
         return@withContext localModel.getLocalGamer(id)
     }
 
-    suspend fun saveGamer(gamer: _GamerStats) = withContext(Dispatchers.IO) {
+    suspend fun saveGamer(gamer: _GamerStats) = withContext(Dispatchers.Main) {
         localModel.saveGamer(gamer)
-        gmsLocal.postValue(getLocalGamer(gamer.primKey))
+        gmsLocal.value = getLocalGamer(gamer.primKey)
     }
 
 }

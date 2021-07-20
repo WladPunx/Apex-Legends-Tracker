@@ -1,12 +1,14 @@
-package by.wlad.koshelev.apexlegendstracker
+package by.wlad.koshelev.apexlegendstracker.UI.SearchFrag
 
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
+import by.wlad.koshelev.apexlegendstracker.R
 import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 
 object CheckBoxFromSearchFrag {
 
@@ -15,19 +17,18 @@ object CheckBoxFromSearchFrag {
     private val XBOX: String = "xbox"
 
 
-    fun create(app: AppCompatActivity, frag: Fragment) {
-
+    fun create(app: AppCompatActivity, frag: SearchFragment) {
 
         app.origin_checkBox_SearchFrag.setOnClickListener {
-            VM.vm.platformName.postValue(ORIGIN)
+            set(ORIGIN)
         }
 
         app.psn_checkBox_SearchFrag.setOnClickListener {
-            VM.vm.platformName.postValue(PSN)
+            set(PSN)
         }
 
         app.xbox_checkBox_SearchFrag.setOnClickListener {
-            VM.vm.platformName.postValue(XBOX)
+            set(XBOX)
         }
 
 
@@ -61,6 +62,12 @@ object CheckBoxFromSearchFrag {
         view.isChecked = true
         view.setTextColor(ContextCompat.getColor(app, color))
         app.nickName_edt_SearchFrag.setTextColor(ContextCompat.getColor(app, color))
+    }
+
+    private fun set(platform: String) {
+        MainScope().launch {
+            VM.vm.platformName.value = platform
+        }
     }
 
 

@@ -1,4 +1,4 @@
-package by.wlad.koshelev.apexlegendstracker
+package by.wlad.koshelev.apexlegendstracker.UI
 
 import android.graphics.BitmapFactory
 import android.widget.ImageView

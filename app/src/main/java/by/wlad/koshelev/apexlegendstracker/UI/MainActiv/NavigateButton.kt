@@ -1,10 +1,11 @@
-package by.wlad.koshelev.apexlegendstracker
+package by.wlad.koshelev.apexlegendstracker.UI.MainActiv
 
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import by.wlad.koshelev.apexlegendstracker.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -13,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 object NavigateButton {
 
     // контекст, который инициализируется и будет использоваться в других функциях
-    private lateinit var app: AppCompatActivity
+    private lateinit var app: MainActivity
 
     // контроллер
     private lateinit var navContr: NavController
@@ -21,7 +22,7 @@ object NavigateButton {
     /**
      * главный метод "слушателей" кнопок
      */
-    fun create(_app: AppCompatActivity) {
+    fun create(_app: MainActivity) {
         app = _app // иниц. основной котекст для Объекта
 
         // инз контроллера

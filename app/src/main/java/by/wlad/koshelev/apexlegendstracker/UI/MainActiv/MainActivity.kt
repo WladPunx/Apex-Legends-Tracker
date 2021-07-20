@@ -1,10 +1,11 @@
-package by.wlad.koshelev.apexlegendstracker
+package by.wlad.koshelev.apexlegendstracker.UI.MainActiv
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
 import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStatsDataBase
+import by.wlad.koshelev.apexlegendstracker.R
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
