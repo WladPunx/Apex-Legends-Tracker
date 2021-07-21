@@ -30,6 +30,7 @@
                 android:inputType="textPersonName"
                 android:text="daltoosh"
                 android:textSize="28sp"
+                android:theme="@style/editText"
                 app:backgroundTint="@color/editTextTint" />
 
             <LinearLayout
@@ -150,7 +151,7 @@
                             android:shadowColor="@color/white"
                             android:shadowRadius="8"
                             android:text="@string/level"
-                            android:textColor="@color/legends_name_shadow"
+                            android:textColor="@color/colorApex"
                             android:textSize="29sp"
                             app:autoSizeTextType="uniform" />
                     </LinearLayout>

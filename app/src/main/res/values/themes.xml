@@ -9,19 +9,29 @@
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
-
-        <item name="colorAccent">@color/colorAccent</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <!-- Customize your theme here.
 
 
+
+
+        -->
+        <item name="colorAccent">@color/colorApex</item>
         <item name="android:fontFamily">@raw/my_font</item>
+
+        <item name="android:alertDialogTheme">@style/AlertDialog</item>
+
 
         <item name="android:textSize">21sp</item>
     </style>
+    <!--
 
 
+
+
+    -->
+    <!--    ЧЕК БОКСЫ -->
     <style name="origin_CheckBox" parent="Theme.ApexLegendsTracker">
         <item name="colorAccent">@color/origin</item>
     </style>
@@ -33,5 +43,32 @@
     <style name="xbox_CheckBox" parent="Theme.ApexLegendsTracker">
         <item name="colorAccent">@color/xbox</item>
     </style>
+    <!--
+
+
+
+
+    -->
+    <!--    EDITTEXT-->
+    <style name="editText" parent="Theme.ApexLegendsTracker">
+        <item name="colorAccent">@color/editTextTint</item>
+    </style>
+    <!--
+
+
+
+
+    -->
+    <!--    АЛЕРТДИАЛОГ-->
+    <style name="AlertDialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:background">@color/item_button_background</item>
+        <item name="colorAccent">@color/colorApex</item>
+        <item name="android:textAppearanceSmall">@raw/my_font</item>
+        <item name="android:textAppearanceMedium">@raw/my_font</item>
+        <item name="android:textAppearanceLarge">@raw/my_font</item>
+        <item name="android:textColor">@color/colorApex</item>
+        <item name="android:textColorPrimary">@color/origin</item>
+    </style>
+
 
 </resources>

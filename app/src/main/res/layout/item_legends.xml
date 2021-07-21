@@ -46,7 +46,7 @@
                     android:layout_weight="5"
                     android:foregroundGravity="center"
                     android:maxLines="1"
-                    android:shadowColor="@color/legends_name_shadow"
+                    android:shadowColor="@color/colorApex"
                     android:shadowRadius="25"
                     android:text="Path"
                     android:textAllCaps="true"
