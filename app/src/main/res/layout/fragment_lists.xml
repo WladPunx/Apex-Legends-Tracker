@@ -18,11 +18,18 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/clearBD_btn_ListsFrag"
-                android:layout_width="match_parent"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_ListsFrag"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:layout_gravity="center"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/gamersLists_Recycler_ListsFrag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <LinearLayout
                 android:id="@+id/FOOTER"
@@ -30,13 +37,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="100dp"
                 android:gravity="center"
-                android:orientation="vertical" >
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/gamersLists_Recycler_ListsFrag"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+                android:orientation="vertical" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </FrameLayout>

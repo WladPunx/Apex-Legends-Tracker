@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/ic_setting"
+        android:title="@string/setting"
+        app:showAsAction="always">
+
+        <menu>
+
+            <item
+                android:id="@+id/interface_setting"
+                android:icon="@drawable/ic_setting"
+                android:title="@string/interfaceSetting"
+                app:showAsAction="never">
+
+
+                <menu>
+
+
+                    <item
+                        android:id="@+id/lang"
+                        android:icon="@drawable/ic_language"
+                        android:title="@string/lang"
+                        app:showAsAction="never" />
+
+
+                    <item
+                        android:id="@+id/main_layout_set"
+                        android:icon="@drawable/ic_layout"
+                        android:title="@string/new_Layout"
+                        app:showAsAction="never" />
+
+
+                </menu>
+            </item>
+
+
+            <item
+                android:id="@+id/clearBD"
+                android:icon="@drawable/ic_del_for_menu_lists"
+                android:title="@string/clear_bd"
+                app:showAsAction="never" />
+
+        </menu>
+    </item>
+
+
+</menu>

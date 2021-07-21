@@ -27,4 +27,18 @@
     <string name="kills">Убийств: </string>
     <string name="wins">Побед: </string>
     <string name="top3">Топ3: </string>
+
+
+    <string name="setting">Настройки</string>
+    <string name="lang">Язык</string>
+    <string name="clear_bd">Очистить сохранения</string>
+    <string name="new_Layout">Изменить стиль</string>
+    <string name="interfaceSetting">Интерфейс</string>
+
+
+    <string name="suuure">Вы точно уверены?</string>
+    <string name="deleteAllGamers">Удалить все сохраненные статистики</string>
+    <string name="deleteOneGamer">Удалить статистику </string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
 </resources>

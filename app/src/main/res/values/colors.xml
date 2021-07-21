@@ -16,7 +16,9 @@
     <color name="legends_item_CardBackground">#363b48</color>
 
 
-    <color name="colorAccent">#80878787</color>
+    <color name="colorAccent">#e24438</color>
+
+    <color name="editTextTint">#80878787</color>
 
 
     <color name="origin">#f87a10</color>
@@ -33,5 +35,8 @@
 
     <color name="red">#CCFF1500</color>
 
+
+
+    <color name="menu_item_lists_frag">#e24438</color>
 
 </resources>

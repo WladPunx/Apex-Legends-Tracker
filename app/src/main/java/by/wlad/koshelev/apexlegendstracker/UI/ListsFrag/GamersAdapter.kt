@@ -1,5 +1,7 @@
 package by.wlad.koshelev.apexlegendstracker.UI.ListsFrag
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,9 +45,25 @@ class GamersAdapter(
          * удаление
          */
         holder.delete.setOnClickListener {
-            MainScope().launch {
-                VM.vm.deleteOneGamer(arr[holder.adapterPosition])
-            }
+
+            AlertDialog.Builder(app)
+                .setCancelable(false)
+                .setTitle(app.getString(R.string.suuure))
+                .setMessage("${app.getString(R.string.deleteOneGamer)} ${arr[holder.adapterPosition].data.platformInfo.platformUserId} ?")
+
+                .setPositiveButton(app.getString(R.string.yes), DialogInterface.OnClickListener { dialog, which ->
+                    MainScope().launch {
+                        VM.vm.deleteOneGamer(arr[holder.adapterPosition])
+                    }
+                })
+
+                .setNegativeButton(app.getString(R.string.no), DialogInterface.OnClickListener { dialog, which ->
+                    dialog.cancel()
+                })
+                .create()
+                .show()
+
+
         }
 
         /**
