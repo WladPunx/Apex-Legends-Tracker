@@ -29,7 +29,8 @@
                 android:hint="@string/enter_nickName"
                 android:inputType="textPersonName"
                 android:text="daltoosh"
-                android:textSize="28sp" />
+                android:textSize="28sp"
+                app:backgroundTint="@color/colorAccent" />
 
             <LinearLayout
                 android:layout_width="match_parent"

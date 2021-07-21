@@ -2,6 +2,7 @@ package by.wlad.koshelev.apexlegendstracker.UI.SearchFrag
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,6 +35,9 @@ class SearchFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         statsScope.cancel()
+        MainScope().launch {
+            VM.vm.loadFlag.value = false
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -108,7 +112,10 @@ class SearchFragment : Fragment() {
                     /**
                      * основной слушатель изменений для текущего Фрагмента
                      */
-                    SearchFragListener.setView(this@SearchFragment)
+                    statsScope.launch {
+                        SearchFragListener.setView(this@SearchFragment)
+                    }
+
 
                     // показываем разметку со статой
                     StatsLayout_SearcgFrag.visibility = View.VISIBLE
@@ -124,8 +131,13 @@ class SearchFragment : Fragment() {
                         .setDuration(500L)
                         .alpha(0f)
                         .withEndAction {
-                            StatsLayout_SearcgFrag.alpha = 1f
-                            StatsLayout_SearcgFrag.visibility = View.GONE
+                            try {
+                                StatsLayout_SearcgFrag.alpha = 1f
+                                StatsLayout_SearcgFrag.visibility = View.GONE
+                            } catch (ex: Exception) {
+                                Log.e("!!ERROR!!", "${ex}  косяк задержки анимации ")
+                            }
+
                         }
                 }
 

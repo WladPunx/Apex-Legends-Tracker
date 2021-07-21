@@ -14,7 +14,8 @@
         android:theme="@style/Theme.ApexLegendsTracker">
         <activity
             android:name="by.wlad.koshelev.apexlegendstracker.UI.MainActiv.MainActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize">
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
