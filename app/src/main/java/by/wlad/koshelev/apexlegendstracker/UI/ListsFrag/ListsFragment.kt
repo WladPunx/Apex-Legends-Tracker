@@ -1,7 +1,5 @@
 package by.wlad.koshelev.apexlegendstracker.UI.ListsFrag
 
-import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
@@ -11,8 +9,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
 import by.wlad.koshelev.apexlegendstracker.R
 import kotlinx.android.synthetic.main.fragment_lists.*
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
 
 
 class ListsFragment : Fragment() {
@@ -45,6 +41,10 @@ class ListsFragment : Fragment() {
             gamersLists_Recycler_ListsFrag.adapter = GamersAdapter(activity as AppCompatActivity, it)
         })
 
+        toolBar_img_ListsFrag.setOnClickListener {
+            getView()?.findViewById<View>(R.id.setting)?.performClick()
+        }
+
     }
 
     /**
@@ -70,22 +70,7 @@ class ListsFragment : Fragment() {
              * очистка всей БД
              */
             R.id.clearBD -> {
-                AlertDialog.Builder(activity)
-                    .setCancelable(false)
-                    .setTitle(getString(R.string.suuure))
-                    .setMessage(getString(R.string.deleteAllGamers))
-
-                    .setPositiveButton(getString(R.string.yes), DialogInterface.OnClickListener { dialog, which ->
-                        MainScope().launch {
-                            VM.vm.dellAllGamers()
-                        }
-                    })
-
-                    .setNegativeButton(getString(R.string.no), DialogInterface.OnClickListener { dialog, which ->
-                        dialog.cancel()
-                    })
-                    .create()
-                    .show()
+                VM.vm.dellAllGamers(activity as AppCompatActivity)
             }
         }
         return super.onOptionsItemSelected(item)
