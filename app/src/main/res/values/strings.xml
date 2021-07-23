@@ -41,4 +41,8 @@
     <string name="deleteOneGamer">Удалить статистику </string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
+
+
+    <string name="now">Сейчас</string>
+    <string name="noSave">Нет сохранения</string>
 </resources>

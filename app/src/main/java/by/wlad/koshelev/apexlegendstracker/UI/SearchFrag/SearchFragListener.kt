@@ -1,19 +1,18 @@
 package by.wlad.koshelev.apexlegendstracker.UI.SearchFrag
 
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
 import by.wlad.koshelev.apexlegendstracker.GamerStats.Segment
 import by.wlad.koshelev.apexlegendstracker.GamerStats._GamerStats
 import by.wlad.koshelev.apexlegendstracker.R
+import by.wlad.koshelev.apexlegendstracker.UI.CoolerView
 import by.wlad.koshelev.apexlegendstracker.UI.SetImgFromInet
 import kotlinx.android.synthetic.main.fragment_search.*
 
 object SearchFragListener {
 
-    fun setView(frag: SearchFragment){
+    fun setView(frag: SearchFragment) {
 
         // АПИШка ппц какая кривая. не у всех игроков могут быть одни и теже данные.
         // поэтому будем оборачивать в Try-Catch обращения к Массивам со статой
@@ -43,33 +42,7 @@ object SearchFragListener {
 
 
         // имя и платформа и цвет
-        frag.gamerName_tx_SerachFrag.setText("${curentStats.data.platformInfo.platformUserId}")
-        when (curentStats.data.platformInfo.platformSlug) {
-            "origin" -> {
-                frag.gamerName_tx_SerachFrag.setTextColor(
-                    ContextCompat.getColor(
-                        frag.activity as AppCompatActivity,
-                        R.color.origin
-                    )
-                )
-            }
-            "psn" -> {
-                frag.gamerName_tx_SerachFrag.setTextColor(
-                    ContextCompat.getColor(
-                        frag.activity as AppCompatActivity,
-                        R.color.playstaion
-                    )
-                )
-            }
-            "xbox" -> {
-                frag.gamerName_tx_SerachFrag.setTextColor(
-                    ContextCompat.getColor(
-                        frag.activity as AppCompatActivity,
-                        R.color.xbox
-                    )
-                )
-            }
-        }
+        CoolerView.setNameWithColor(frag.activity as AppCompatActivity, frag.gamerName_tx_SerachFrag, curentStats)
 
         // аватар
         SetImgFromInet.set(curentStats.data.platformInfo.avatarUrl, frag.avatar_img_SerachFrag)

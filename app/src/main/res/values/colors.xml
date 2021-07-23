@@ -36,4 +36,9 @@
     <color name="red">#CCFF1500</color>
 
 
+    <color name="positiveChange">#00FF37</color>
+    <color name="negativeChange">#FF0000</color>
+    <color name="neutralChange">#FFFFFF</color>
+
+
 </resources>

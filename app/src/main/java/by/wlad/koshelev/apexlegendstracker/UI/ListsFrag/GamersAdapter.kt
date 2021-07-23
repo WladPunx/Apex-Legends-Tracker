@@ -6,12 +6,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
 import by.wlad.koshelev.apexlegendstracker.GamerStats._GamerStats
 import by.wlad.koshelev.apexlegendstracker.R
-import by.wlad.koshelev.apexlegendstracker.UI.CoolerDate
+import by.wlad.koshelev.apexlegendstracker.UI.CoolerView
 import by.wlad.koshelev.apexlegendstracker.UI.SetImgFromInet
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
@@ -71,13 +70,8 @@ class GamersAdapter(
 
 
         // имя и цвет
-        holder.name.setText("${a.data.platformInfo.platformUserId}")
-        when (a.data.platformInfo.platformSlug) {
-            "origin" -> holder.name.setTextColor(ContextCompat.getColor(app, R.color.origin))
-            "psn" -> holder.name.setTextColor(ContextCompat.getColor(app, R.color.playstaion))
-            "xbox" -> holder.name.setTextColor(ContextCompat.getColor(app, R.color.xbox))
+        CoolerView.setNameWithColor(app, holder.name, a)
 
-        }
 
         // аватар
         SetImgFromInet.set(a.data.platformInfo.avatarUrl, holder.avatar)
@@ -90,7 +84,7 @@ class GamersAdapter(
 
 
         // дата последнего входа
-        holder.date.setText("${CoolerDate.getCoolerDate(a, app)}")
+        holder.date.setText("${CoolerView.getCoolerDate(a, app)}")
     }
 
 

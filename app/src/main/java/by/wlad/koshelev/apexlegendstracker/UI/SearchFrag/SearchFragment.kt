@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
 import by.wlad.koshelev.apexlegendstracker.R
-import by.wlad.koshelev.apexlegendstracker.UI.CoolerDate
+import by.wlad.koshelev.apexlegendstracker.UI.CoolerView
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
@@ -79,7 +79,7 @@ class SearchFragment : Fragment() {
          */
         VM.vm.gmsLocal.observe(viewLifecycleOwner, Observer {
             if (it != null) {
-                saverStatus_txt_SearchFrag.setText("${CoolerDate.getCoolerDate(it, activity as AppCompatActivity)}")
+                saverStatus_txt_SearchFrag.setText("${CoolerView.getCoolerDate(it, activity as AppCompatActivity)}")
             } else {
                 saverStatus_txt_SearchFrag.setText("")
             }

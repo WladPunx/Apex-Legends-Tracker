@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_lists" />
     <fragment
         android:id="@+id/changesFragment"
-        android:name="by.wlad.koshelev.apexlegendstracker.Frags.ChangesFragment"
+        android:name="by.wlad.koshelev.apexlegendstracker.UI.ChangesFragment.ChangesFragment"
         android:label="fragment_changes"
         tools:layout="@layout/fragment_changes" />
 </navigation>
