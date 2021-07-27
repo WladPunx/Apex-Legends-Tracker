@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
 import by.wlad.koshelev.apexlegendstracker.R
+import by.wlad.koshelev.apexlegendstracker.UI.MainActiv.DrawerSettings
 import kotlinx.android.synthetic.main.fragment_lists.*
 
 
@@ -72,6 +73,14 @@ class ListsFragment : Fragment() {
             R.id.clearBD -> {
                 VM.vm.dellAllGamers(activity as AppCompatActivity)
             }
+            /**
+             * изменение стиля
+             */
+            R.id.main_layout_set -> {
+                DrawerSettings.setStyle(activity as AppCompatActivity)
+            }
+
+
         }
         return super.onOptionsItemSelected(item)
     }

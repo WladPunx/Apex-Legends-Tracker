@@ -8,16 +8,16 @@
     <fragment
         android:id="@+id/searchFragment"
         android:name="by.wlad.koshelev.apexlegendstracker.UI.SearchFrag.SearchFragment"
-        android:label="fragment_search"
+        android:label="@string/search"
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/listsFragment"
         android:name="by.wlad.koshelev.apexlegendstracker.UI.ListsFrag.ListsFragment"
-        android:label="fragment_lists"
+        android:label="@string/listGamer"
         tools:layout="@layout/fragment_lists" />
     <fragment
         android:id="@+id/changesFragment"
         android:name="by.wlad.koshelev.apexlegendstracker.UI.ChangesFragment.ChangesFragment"
-        android:label="fragment_changes"
+        android:label="@string/change"
         tools:layout="@layout/fragment_changes" />
 </navigation>
