@@ -3,7 +3,7 @@
 
     <item>
         <layer-list>
-            <item>
+            <item  android:top="2dp" android:left="2dp" android:right="2dp">
                 <shape >
                     <corners android:topLeftRadius="10dp" android:topRightRadius="10dp" />
                     <stroke android:width="4dp" android:color="@color/item_button_select" />

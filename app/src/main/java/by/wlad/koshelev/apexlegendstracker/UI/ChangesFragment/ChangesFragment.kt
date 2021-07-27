@@ -16,6 +16,8 @@ import by.wlad.koshelev.apexlegendstracker.R
 import by.wlad.koshelev.apexlegendstracker.UI.CoolerView
 import by.wlad.koshelev.apexlegendstracker.UI.SetImgFromInet
 import kotlinx.android.synthetic.main.fragment_changes.*
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 
 
 class ChangesFragment : Fragment() {
@@ -32,6 +34,16 @@ class ChangesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        /**
+         * кнопка сохранения
+         */
+        saveGamer_btn_ChangeFrag.setOnClickListener {
+            MainScope().launch {
+                VM.vm.saveGamer()
+            }
+        }
 
 
         /**
@@ -63,7 +75,7 @@ class ChangesFragment : Fragment() {
                 try {
                     new_kills_txt_ChangeFrag.setText("${lifeTimeStat.stats.kills.displayValue}")
                 } catch (ex: java.lang.Exception) {
-                    new_kills_txt_ChangeFrag.setText("n/a")
+                    new_kills_txt_ChangeFrag.setNA()
                 }
 
 
@@ -71,14 +83,14 @@ class ChangesFragment : Fragment() {
                 try {
                     newWins_txt_ChangeFrag.setText("${lifeTimeStat.stats.winsWithFullSquad.displayValue}")
                 } catch (ex: java.lang.Exception) {
-                    newWins_txt_ChangeFrag.setText("n/a")
+                    newWins_txt_ChangeFrag.setNA()
                 }
 
                 // новые топ3
                 try {
                     newTop_txt_ChangeFrag.setText("${lifeTimeStat.stats.timesPlacedtop3.displayValue}")
                 } catch (ex: java.lang.Exception) {
-                    newTop_txt_ChangeFrag.setText("n/a")
+                    newTop_txt_ChangeFrag.setNA()
                 }
 
 
@@ -111,14 +123,14 @@ class ChangesFragment : Fragment() {
                 try {
                     old_kills_txt_ChangeFrag.setText("${lifeTimeStat.stats.kills.displayValue}")
                 } catch (ex: java.lang.Exception) {
-                    old_kills_txt_ChangeFrag.setText("n/a")
+                    old_kills_txt_ChangeFrag.setNA()
                 }
 
                 // старые победы
                 try {
                     oldWins_txt_ChangeFrag.setText("${lifeTimeStat.stats.winsWithFullSquad.displayValue}")
                 } catch (ex: java.lang.Exception) {
-                    oldWins_txt_ChangeFrag.setText("n/a")
+                    oldWins_txt_ChangeFrag.setNA()
                 }
 
 
@@ -126,7 +138,7 @@ class ChangesFragment : Fragment() {
                 try {
                     oldTop_txt_ChangeFrag.setText("${lifeTimeStat.stats.timesPlacedtop3.displayValue}")
                 } catch (ex: java.lang.Exception) {
-                    oldTop_txt_ChangeFrag.setText("n/a")
+                    oldTop_txt_ChangeFrag.setNA()
                 }
 
 
@@ -136,13 +148,13 @@ class ChangesFragment : Fragment() {
                 date_txt_ChangeFrag.setText(getString(R.string.noSave))
 
                 // киллы
-                old_kills_txt_ChangeFrag.setText("n/a")
+                old_kills_txt_ChangeFrag.setNA()
 
                 // победы
-                oldWins_txt_ChangeFrag.setText("n/a")
+                oldWins_txt_ChangeFrag.setNA()
 
                 //топ 3
-                oldTop_txt_ChangeFrag.setText("n/a")
+                oldTop_txt_ChangeFrag.setNA()
             }
         })
 
@@ -223,6 +235,14 @@ class ChangesFragment : Fragment() {
         txtView.setText("${a}")
         if (a > 0) txtView.setTextColor(ContextCompat.getColor(activity as AppCompatActivity, R.color.positiveChange))
         else if (a < 0) txtView.setTextColor(ContextCompat.getColor(activity as AppCompatActivity, R.color.negativeChange))
+    }
+
+
+    /**
+     * N/A данных
+     */
+    private fun TextView.setNA() {
+        this.setText("n/a")
     }
 
 

@@ -67,9 +67,7 @@ class SearchFragment : Fragment() {
          */
         saveGamer_btn_SearchFrag.setOnClickListener {
             statsScope.launch {
-                if (VM.vm.gmsInet.value != null) {
-                    VM.vm.saveGamer(VM.vm.gmsInet.value!!)
-                }
+                VM.vm.saveGamer()
             }
         }
 

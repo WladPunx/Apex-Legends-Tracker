@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
 import by.wlad.koshelev.apexlegendstracker.GamerStats._GamerStats
@@ -56,6 +57,9 @@ class GamersAdapter(
             mainScope.launch {
                 VM.vm.getGms(platform, nickName)
             }
+            val navContr = app.supportFragmentManager.findFragmentById(R.id.nav_host_fragment)!!.findNavController()
+            navContr.popBackStack()
+            navContr.navigate(R.id.changesFragment)
         }
 
         return holder

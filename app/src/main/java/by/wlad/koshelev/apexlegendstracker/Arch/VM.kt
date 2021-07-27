@@ -102,10 +102,12 @@ class VM(private val apl: Application) : AndroidViewModel(apl) {
     // сохраняем игрока в БД
     // сразу же берем новые данные на него (для статуса "последнее сохранение")
     // обновляем список ВСЕХ игроков
-    suspend fun saveGamer(gamer: _GamerStats) = withContext(Dispatchers.Main) {
-        localModel.saveGamer(gamer)
-        gmsLocal.value = getLocalGamer(gamer.primKey)
-        getAllGamers()
+    suspend fun saveGamer() = withContext(Dispatchers.Main) {
+        if (gmsInet.value != null) {
+            localModel.saveGamer(gmsInet.value!!)
+            gmsLocal.value = getLocalGamer(gmsInet.value!!.primKey)
+            getAllGamers()
+        }
     }
 
     /**
@@ -167,7 +169,7 @@ class VM(private val apl: Application) : AndroidViewModel(apl) {
      */
     // этот метод нужен  в методах удаления.
     // если мы удалим ТЕКУЩЕГО игрока, то в окне подробной статы останется "дата последенго сохранения".
-    // этот метод исправляет этот баг
+    // этот метод исправляет этот баг. мы просто пытаемся вязть из БД игрока. а его там НЕТ ;)
     private suspend fun checkLocalGms() = withContext(Dispatchers.Main) {
         if (gmsInet.value != null) {
             gmsLocal.value = getLocalGamer(gmsInet.value!!.primKey)
