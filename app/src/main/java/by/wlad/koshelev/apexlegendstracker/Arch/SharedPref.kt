@@ -7,4 +7,5 @@ object SharedPref {
     lateinit var myShar: SharedPreferences
     val APP_PREFERENCES = "mysettings"
     val style = "style"
+    val lang = "lang"
 }

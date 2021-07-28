@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">ApexLegendsTracker</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="search">Search</string>
+    <string name="listGamer">Save</string>
+    <string name="change">Compare</string>
+
+
+    <string name="enter_nickName">Nickname</string>
+    <string name="find">Find</string>
+    <string name="save">Save</string>
+
+    <string name="minutes">min.</string>
+    <string name="hours">h.</string>
+    <string name="day">d.</string>
+    <string name="ago">ago</string>
+
+    <string name="origin">Origin</string>
+    <string name="playstation">Playstation</string>
+    <string name="xbox">XBox</string>
+
+    <string name="load_status">Load...</string>
+    <string name="load_error">Oops!... Error!</string>
+
+    <string name="error_nickname">No such player. Check the data.</string>
+    <string name="error_inet">Network connection error</string>
+
+    <string name="level">lvl.</string>
+    <string name="kills">Kills: </string>
+    <string name="wins">Wins: </string>
+    <string name="top3">Top3: </string>
+
+
+    <string name="setting">Settings</string>
+    <string name="lang">Language</string>
+    <string name="clear_bd">Clear save</string>
+    <string name="new_Layout">Change style</string>
+    <string name="interfaceSetting">Interface</string>
+
+
+    <string name="suuure">Are you sure?</string>
+    <string name="deleteAllGamers">Delete all saved statistics</string>
+    <string name="deleteOneGamer">Delete statistics </string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+
+    <string name="now">Now</string>
+    <string name="noSave">No save </string>
+</resources>

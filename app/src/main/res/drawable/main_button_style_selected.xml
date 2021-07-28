@@ -3,8 +3,8 @@
 
     <item>
         <layer-list>
-            <item  android:top="2dp" android:left="2dp" android:right="2dp">
-                <shape >
+            <item>
+                <shape>
                     <corners android:topLeftRadius="10dp" android:topRightRadius="10dp" />
                     <stroke android:width="4dp" android:color="@color/item_button_select" />
                     <solid android:color="@color/item_button_background" />

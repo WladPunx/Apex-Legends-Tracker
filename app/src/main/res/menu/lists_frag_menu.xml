@@ -25,7 +25,23 @@
                         android:id="@+id/lang"
                         android:icon="@drawable/ic_language"
                         android:title="@string/lang"
-                        app:showAsAction="never" />
+                        app:showAsAction="never">
+                        <menu>
+
+                            <item
+                                android:id="@+id/rusLang"
+                                android:title="Русский"
+                                app:showAsAction="never" />
+
+
+                            <item
+                                android:id="@+id/engLang"
+                                android:title="English"
+                                app:showAsAction="never" />
+
+
+                        </menu>
+                    </item>
 
 
                     <item

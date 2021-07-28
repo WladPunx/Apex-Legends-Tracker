@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
+import by.wlad.koshelev.apexlegendstracker.Arch.SharedPref
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
 import by.wlad.koshelev.apexlegendstracker.R
 import by.wlad.koshelev.apexlegendstracker.UI.MainActiv.DrawerSettings
+import by.wlad.koshelev.apexlegendstracker.UI.MainActiv.MainActivity
 import kotlinx.android.synthetic.main.fragment_lists.*
 
 
@@ -78,6 +80,27 @@ class ListsFragment : Fragment() {
              */
             R.id.main_layout_set -> {
                 DrawerSettings.setStyle(activity as AppCompatActivity)
+            }
+
+
+            /**
+             * выбор языка
+             */
+            // русский
+            R.id.rusLang -> {
+                SharedPref.myShar
+                    .edit()
+                    .putString(SharedPref.lang, "ru")
+                    .apply()
+                if (activity is MainActivity) (activity as MainActivity).myRestart()
+            }
+            // английский
+            R.id.engLang -> {
+                SharedPref.myShar
+                    .edit()
+                    .putString(SharedPref.lang, "en")
+                    .apply()
+                if (activity is MainActivity) (activity as MainActivity).myRestart()
             }
 
 

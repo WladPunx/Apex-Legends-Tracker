@@ -1,5 +1,7 @@
 package by.wlad.koshelev.apexlegendstracker.UI.MainActiv
 
+import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -9,12 +11,21 @@ import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStatsDataBase
 import by.wlad.koshelev.apexlegendstracker.R
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         // ШаредПреф
         SharedPref.myShar = getSharedPreferences(SharedPref.APP_PREFERENCES, MODE_PRIVATE)
+
+        // настройка языка
+        val lang: String? = SharedPref.myShar.getString(SharedPref.lang, "ru")
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+        val configuration = Configuration()
+        configuration.locale = locale
+        baseContext.resources.updateConfiguration(configuration, null)
 
 
         super.onCreate(savedInstanceState)
@@ -44,6 +55,14 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    }
+
+
+    // метод рестрата для смены языка
+    fun myRestart() {
+        val int = Intent(this, MainActivity::class.java)
+        startActivity(int)
+        finish()
     }
 
 
