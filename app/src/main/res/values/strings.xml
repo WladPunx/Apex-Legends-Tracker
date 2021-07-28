@@ -4,9 +4,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-    <string name="search">Поиск игроков</string>
-    <string name="listGamer">Сохраненные игроки</string>
-    <string name="change">Сравнить статистику</string>
+    <string name="search">Поиск</string>
+    <string name="listGamer">Сохранения</string>
+    <string name="change">Сравнить</string>
 
 
     <string name="enter_nickName">Никнейм игрока</string>
