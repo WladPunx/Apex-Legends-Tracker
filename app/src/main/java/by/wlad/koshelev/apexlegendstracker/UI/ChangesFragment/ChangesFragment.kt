@@ -35,6 +35,21 @@ class ChangesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        /**
+         * слушатель статуса загрузки
+         */
+        VM.vm.loadFlag.observe(viewLifecycleOwner, Observer {
+            if (it == null) {
+                loadStatus_txt_ChangeFrag.setText("${getString(R.string.load_error)}")
+                loadStatus_txt_ChangeFrag.visibility = View.VISIBLE
+            } else if (it) {
+                loadStatus_txt_ChangeFrag.setText("${getString(R.string.load_status)}")
+                loadStatus_txt_ChangeFrag.visibility = View.VISIBLE
+            } else {
+                loadStatus_txt_ChangeFrag.visibility = View.INVISIBLE
+            }
+        })
+
 
         /**
          * кнопка сохранения
@@ -53,7 +68,7 @@ class ChangesFragment : Fragment() {
             if (VM.vm.gmsInet.value != null) {
                 setChangeColumn()
 
-                HEADER_ChangeFrag.visibility = View.VISIBLE
+                layout_ChangeFrag.visibility = View.VISIBLE
 
                 val lifeTimeStat: Segment = getLifeTimeStats(it)
 
@@ -95,7 +110,7 @@ class ChangesFragment : Fragment() {
 
 
                 // NULL NULL NULL NULL NULL NULL NULL NULL NULL NULL
-            } else HEADER_ChangeFrag.visibility = View.GONE
+            } else layout_ChangeFrag.visibility = View.GONE
         })
 
 

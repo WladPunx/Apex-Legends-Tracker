@@ -16,6 +16,11 @@
     <color name="legends_item_CardBackground">#363b48</color>
 
 
+    <color name="headerColor">@color/item_button_background</color>
+
+    <color name="burgerColor">#FF6458</color>
+
+
     <color name="colorApex">#e24438</color>
 
     <color name="editTextTint">#80878787</color>

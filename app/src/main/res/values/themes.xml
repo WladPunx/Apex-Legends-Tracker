@@ -3,7 +3,7 @@
     <style name="Theme.ApexLegendsTracker" parent="Theme.Design.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/colorApex</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimaryVariant">@color/headerColor</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -80,7 +80,7 @@
     <style name="DrawerStyle" parent="Theme.ApexLegendsTracker">
         <item name="android:textSize">30sp</item>
         <item name="android:layout_marginTop">2dp</item>
-<!--        <item name="android:layout_marginLeft">5sp</item>-->
+        <item name="colorControlNormal">@color/burgerColor</item>
     </style>
 
 
