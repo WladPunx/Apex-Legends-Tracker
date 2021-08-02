@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import by.wlad.koshelev.apexlegendstracker.GamerStats.Segment
+import by.wlad.koshelev.apexlegendstracker.GamerStats.etc.Segment
 import by.wlad.koshelev.apexlegendstracker.R
 import by.wlad.koshelev.apexlegendstracker.UI.SetImgFromInet
 

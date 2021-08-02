@@ -6,7 +6,7 @@ import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import by.wlad.koshelev.apexlegendstracker.GamerStats._GamerStats
+import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStats
 import by.wlad.koshelev.apexlegendstracker.R
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.coroutines.Dispatchers
@@ -27,10 +27,10 @@ class VM(private val apl: Application) : AndroidViewModel(apl) {
 
     var loadFlag: MutableLiveData<Boolean> = MutableLiveData(false) // статус загрузки
 
-    var gmsInet: MutableLiveData<_GamerStats> = MutableLiveData(null) // текущий игрок из инета
-    var gmsLocal: MutableLiveData<_GamerStats> = MutableLiveData(null) // локаьлная стата выбранного игрока
+    var gmsInet: MutableLiveData<GamerStats> = MutableLiveData(null) // текущий игрок из инета
+    var gmsLocal: MutableLiveData<GamerStats> = MutableLiveData(null) // локаьлная стата выбранного игрока
 
-    var gmsLists: MutableLiveData<MutableList<_GamerStats>> = MutableLiveData(mutableListOf()) // список всех сохраненных юзеров
+    var gmsLists: MutableLiveData<MutableList<GamerStats>> = MutableLiveData(mutableListOf()) // список всех сохраненных юзеров
 
 
     /**
@@ -57,8 +57,8 @@ class VM(private val apl: Application) : AndroidViewModel(apl) {
      */
     // берем данные из инета. если была ошибка - данные будут null
     // если данные null - то и наш ФлагСтатус тоже null
-    private suspend fun getGmsFromInet(platform: String, nickName: String): _GamerStats? = withContext(Dispatchers.Main) {
-        val ret: _GamerStats? = remoteModel.getGmsFromInet(platform, nickName)
+    private suspend fun getGmsFromInet(platform: String, nickName: String): GamerStats? = withContext(Dispatchers.Main) {
+        val ret: GamerStats? = remoteModel.getGmsFromInet(platform, nickName)
         if (ret == null) loadFlag.value = null
         return@withContext ret
     }
@@ -67,7 +67,7 @@ class VM(private val apl: Application) : AndroidViewModel(apl) {
     /**
      * запрос локальных данных
      */
-    private suspend fun getLocalGamer(id: String): _GamerStats = withContext(Dispatchers.IO) {
+    private suspend fun getLocalGamer(id: String): GamerStats = withContext(Dispatchers.IO) {
         return@withContext localModel.getLocalGamer(id)
     }
 
@@ -85,7 +85,7 @@ class VM(private val apl: Application) : AndroidViewModel(apl) {
      * получение всех игроков из БД
      */
     suspend fun getAllGamers() = withContext(Dispatchers.IO) {
-        val list: MutableList<_GamerStats> = localModel.getAllGamers()
+        val list: MutableList<GamerStats> = localModel.getAllGamers()
 
         withContext(Dispatchers.Default) {
             gmsLists.value?.clear()
@@ -114,7 +114,7 @@ class VM(private val apl: Application) : AndroidViewModel(apl) {
      * удаление ОДНОГО игрока
      */
     // удаляем игрока. обновляем список всех. делаем проверку.
-    fun deleteOneGamer(gamer: _GamerStats, app: AppCompatActivity) {
+    fun deleteOneGamer(gamer: GamerStats, app: AppCompatActivity) {
         AlertDialog.Builder(app)
             .setCancelable(false)
             .setTitle(app.getString(R.string.suuure))

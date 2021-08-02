@@ -3,8 +3,8 @@ package by.wlad.koshelev.apexlegendstracker.UI.SearchFrag
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
-import by.wlad.koshelev.apexlegendstracker.GamerStats.Segment
-import by.wlad.koshelev.apexlegendstracker.GamerStats._GamerStats
+import by.wlad.koshelev.apexlegendstracker.GamerStats.etc.Segment
+import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStats
 import by.wlad.koshelev.apexlegendstracker.R
 import by.wlad.koshelev.apexlegendstracker.UI.CoolerView
 import by.wlad.koshelev.apexlegendstracker.UI.SetImgFromInet
@@ -18,7 +18,7 @@ object SearchFragListener {
         // поэтому будем оборачивать в Try-Catch обращения к Массивам со статой
 
         // данные статистики. все + общие из LifeTime
-        val curentStats: _GamerStats = VM.vm.gmsInet.value!!
+        val curentStats: GamerStats = VM.vm.gmsInet.value!!
         val _lifeTimeStat: MutableList<Segment> = curentStats.data.segments
             .asSequence()
             .filter { it.metadata.name == "Lifetime" }

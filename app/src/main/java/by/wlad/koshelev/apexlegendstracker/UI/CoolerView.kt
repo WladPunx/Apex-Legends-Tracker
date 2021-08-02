@@ -3,7 +3,7 @@ package by.wlad.koshelev.apexlegendstracker.UI
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import by.wlad.koshelev.apexlegendstracker.GamerStats._GamerStats
+import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStats
 import by.wlad.koshelev.apexlegendstracker.R
 import java.util.*
 
@@ -12,7 +12,7 @@ object CoolerView {
     /**
      * клевая ДАТА
      */
-    fun getCoolerDate(gamer: _GamerStats, app: AppCompatActivity): String {
+    fun getCoolerDate(gamer: GamerStats, app: AppCompatActivity): String {
         val currentDate: Long = Date().time
         val oldDate: Long = gamer.dateInfo.toLong()
         val minutes: Int = ((currentDate - oldDate) / 1000 / 60).toInt()
@@ -28,7 +28,7 @@ object CoolerView {
     /**
      * клевое имя игрока с цветом платформы
      */
-    fun setNameWithColor(app: AppCompatActivity, view: TextView, gms: _GamerStats) {
+    fun setNameWithColor(app: AppCompatActivity, view: TextView, gms: GamerStats) {
         view.setText("${gms.data.platformInfo.platformUserId}")
         when (gms.data.platformInfo.platformSlug) {
             "origin" -> view.setTextColor(ContextCompat.getColor(app, R.color.origin))

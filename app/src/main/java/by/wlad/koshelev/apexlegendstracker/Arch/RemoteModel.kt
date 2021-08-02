@@ -2,21 +2,21 @@ package by.wlad.koshelev.apexlegendstracker.Arch
 
 import android.app.Application
 import android.widget.Toast
-import by.wlad.koshelev.apexlegendstracker.GamerStats._ApiGamerStats
-import by.wlad.koshelev.apexlegendstracker.GamerStats._GamerStats
+import by.wlad.koshelev.apexlegendstracker.GamerStats.ApiGamerStats
+import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStats
 import by.wlad.koshelev.apexlegendstracker.R
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class RemoteModel(private val apl: Application) {
 
-    suspend fun getGmsFromInet(platform: String, nickName: String): _GamerStats? =
+    suspend fun getGmsFromInet(platform: String, nickName: String): GamerStats? =
         withContext(Dispatchers.Main) {
-            var ret: _GamerStats? = null
+            var ret: GamerStats? = null
             try {
 
                 withContext(Dispatchers.IO) {
-                    ret = _ApiGamerStats.create().getGamerStats(platform, nickName)
+                    ret = ApiGamerStats.create().getGamerStats(platform, nickName)
                     ret?.inz()
                 }
 

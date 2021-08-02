@@ -1,17 +1,17 @@
 package by.wlad.koshelev.apexlegendstracker.Arch
 
 import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStatsDataBase
-import by.wlad.koshelev.apexlegendstracker.GamerStats._GamerStats
+import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStats
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class LocalModel {
 
-    suspend fun getLocalGamer(id: String): _GamerStats = withContext(Dispatchers.IO) {
+    suspend fun getLocalGamer(id: String): GamerStats = withContext(Dispatchers.IO) {
         return@withContext GamerStatsDataBase.dao.getGamer(id)
     }
 
-    suspend fun saveGamer(gamer: _GamerStats) = withContext(Dispatchers.IO) {
+    suspend fun saveGamer(gamer: GamerStats) = withContext(Dispatchers.IO) {
         try {
             GamerStatsDataBase.dao.addNew(gamer)
         } catch (ex: Exception) {
@@ -19,11 +19,11 @@ class LocalModel {
         }
     }
 
-    suspend fun getAllGamers(): MutableList<_GamerStats> = withContext(Dispatchers.IO) {
+    suspend fun getAllGamers(): MutableList<GamerStats> = withContext(Dispatchers.IO) {
         return@withContext GamerStatsDataBase.dao.getAllGamers()
     }
 
-    suspend fun deleteOneGamer(gamer: _GamerStats) = withContext(Dispatchers.IO) {
+    suspend fun deleteOneGamer(gamer: GamerStats) = withContext(Dispatchers.IO) {
         GamerStatsDataBase.dao.deleteOne(gamer)
     }
 

@@ -10,8 +10,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
-import by.wlad.koshelev.apexlegendstracker.GamerStats.Segment
-import by.wlad.koshelev.apexlegendstracker.GamerStats._GamerStats
+import by.wlad.koshelev.apexlegendstracker.GamerStats.etc.Segment
+import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStats
 import by.wlad.koshelev.apexlegendstracker.R
 import by.wlad.koshelev.apexlegendstracker.UI.CoolerView
 import by.wlad.koshelev.apexlegendstracker.UI.SetImgFromInet
@@ -232,8 +232,8 @@ class ChangesFragment : Fragment() {
     /**
      * метод сортировки статы
      */
-    private fun getLifeTimeStats(it: _GamerStats): Segment {
-        val curentStats: _GamerStats = it
+    private fun getLifeTimeStats(it: GamerStats): Segment {
+        val curentStats: GamerStats = it
         val _lifeTimeStat: MutableList<Segment> = curentStats.data.segments
             .asSequence()
             .filter { it.metadata.name == "Lifetime" }
