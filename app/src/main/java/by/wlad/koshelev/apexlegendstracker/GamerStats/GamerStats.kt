@@ -49,18 +49,19 @@ abstract class GamerStatsDataBase : RoomDatabase() {
     abstract fun getStatsDAO(): StatsDAO
 
     companion object {
-        lateinit var bd: GamerStatsDataBase
-        lateinit var dao: StatsDAO
-        fun create(app: AppCompatActivity) {
-            bd = Room.databaseBuilder(
+        lateinit var app: AppCompatActivity
+
+        val bd: GamerStatsDataBase by lazy {
+            Room.databaseBuilder(
                 app,
                 GamerStatsDataBase::class.java,
                 "gamer_stats_bd_1"
             )
                 .build()
+        }
 
-            dao = bd.getStatsDAO()
-
+        val dao: StatsDAO by lazy {
+            bd.getStatsDAO()
         }
     }
 }

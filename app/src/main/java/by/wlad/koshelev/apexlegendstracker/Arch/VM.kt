@@ -1,17 +1,12 @@
 package by.wlad.koshelev.apexlegendstracker.Arch
 
-import android.app.AlertDialog
 import android.app.Application
-import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStats
-import by.wlad.koshelev.apexlegendstracker.R
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
@@ -114,26 +109,10 @@ class VM(private val apl: Application) : AndroidViewModel(apl) {
      * удаление ОДНОГО игрока
      */
     // удаляем игрока. обновляем список всех. делаем проверку.
-    fun deleteOneGamer(gamer: GamerStats, app: AppCompatActivity) {
-        AlertDialog.Builder(app)
-            .setCancelable(false)
-            .setTitle(app.getString(R.string.suuure))
-            .setMessage("${app.getString(R.string.deleteOneGamer)} ${gamer.data.platformInfo.platformUserId} ?")
-
-            .setPositiveButton(app.getString(R.string.yes), DialogInterface.OnClickListener { dialog, which ->
-                MainScope().launch {
-                    localModel.deleteOneGamer(gamer)
-                    getAllGamers()
-                    checkLocalGms()
-                }
-
-            })
-
-            .setNegativeButton(app.getString(R.string.no), DialogInterface.OnClickListener { dialog, which ->
-                dialog.cancel()
-            })
-            .create()
-            .show()
+    suspend fun deleteOneGamer(gamer: GamerStats) = withContext(Dispatchers.IO) {
+        localModel.deleteOneGamer(gamer)
+        getAllGamers()
+        checkLocalGms()
     }
 
 
@@ -141,26 +120,10 @@ class VM(private val apl: Application) : AndroidViewModel(apl) {
      * удаление ВСЕХ из бд.
      */
     // удаляем всех. обновляем всех. проверка.
-    fun dellAllGamers(app: AppCompatActivity) {
-        AlertDialog.Builder(app)
-            .setCancelable(false)
-            .setTitle(apl.getString(R.string.suuure))
-            .setMessage(apl.getString(R.string.deleteAllGamers))
-
-            .setPositiveButton(apl.getString(R.string.yes), DialogInterface.OnClickListener { dialog, which ->
-                MainScope().launch {
-                    localModel.dellAllGamers()
-                    getAllGamers()
-                    checkLocalGms()
-                }
-            })
-
-            .setNegativeButton(apl.getString(R.string.no), DialogInterface.OnClickListener { dialog, which ->
-                dialog.cancel()
-            })
-            .create()
-            .show()
-
+    suspend fun dellAllGamers() = withContext(Dispatchers.IO) {
+        localModel.dellAllGamers()
+        getAllGamers()
+        checkLocalGms()
     }
 
 

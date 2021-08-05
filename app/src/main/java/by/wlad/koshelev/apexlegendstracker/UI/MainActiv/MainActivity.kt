@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // включение БД
-        GamerStatsDataBase.create(this)
+        GamerStatsDataBase.app = this
 
         // поключение ViewModel
         VM.vm = ViewModelProvider(this).get(VM::class.java)

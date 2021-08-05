@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import by.wlad.koshelev.apexlegendstracker.Arch.SharedPref
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
 import by.wlad.koshelev.apexlegendstracker.R
+import by.wlad.koshelev.apexlegendstracker.UI.AlertDelete
 import by.wlad.koshelev.apexlegendstracker.UI.MainActiv.DrawerSettings
 import by.wlad.koshelev.apexlegendstracker.UI.MainActiv.MainActivity
 import kotlinx.android.synthetic.main.fragment_lists.*
@@ -73,7 +74,7 @@ class ListsFragment : Fragment() {
              * очистка всей БД
              */
             R.id.clearBD -> {
-                VM.vm.dellAllGamers(activity as AppCompatActivity)
+               AlertDelete.dellAllGamers(activity as AppCompatActivity)
             }
             /**
              * изменение стиля

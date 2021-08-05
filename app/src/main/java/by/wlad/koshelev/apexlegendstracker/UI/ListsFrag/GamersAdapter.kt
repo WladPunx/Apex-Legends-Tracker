@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
 import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStats
 import by.wlad.koshelev.apexlegendstracker.R
+import by.wlad.koshelev.apexlegendstracker.UI.AlertDelete
 import by.wlad.koshelev.apexlegendstracker.UI.CoolerView
 import by.wlad.koshelev.apexlegendstracker.UI.SetImgFromInet
 import kotlinx.coroutines.MainScope
@@ -43,7 +44,7 @@ class GamersAdapter(
          * удаление
          */
         holder.delete.setOnClickListener {
-            VM.vm.deleteOneGamer(arr[holder.adapterPosition], app)
+            AlertDelete.deleteOneGamer(arr[holder.adapterPosition], app)
         }
 
         /**
