@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         val configuration = Configuration()
         configuration.locale = locale
         baseContext.resources.updateConfiguration(configuration, null)
+        applicationContext.resources.updateConfiguration(configuration, null)
 
 
         super.onCreate(savedInstanceState)
