@@ -10,11 +10,11 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
-import by.wlad.koshelev.apexlegendstracker.GamerStats.etc.Segment
 import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStats
+import by.wlad.koshelev.apexlegendstracker.GamerStats.etc.Segment
 import by.wlad.koshelev.apexlegendstracker.R
+import by.wlad.koshelev.apexlegendstracker.UI.ImageConvertor
 import by.wlad.koshelev.apexlegendstracker.UI.CoolerView
-import by.wlad.koshelev.apexlegendstracker.UI.SetImgFromInet
 import kotlinx.android.synthetic.main.fragment_changes.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -73,11 +73,13 @@ class ChangesFragment : Fragment() {
                 val lifeTimeStat: Segment = getLifeTimeStats(it)
 
                 // установка аватара
-                SetImgFromInet.set(it.data.platformInfo.avatarUrl, avatar_img_ChangeFrag)
+//                SetImgFromInet.set(it.data.platformInfo.avatarUrl, avatar_img_ChangeFrag)
+                avatar_img_ChangeFrag.setImageBitmap(ImageConvertor.byteToBitmap(it.data.platformInfo.avatarImg))
 
                 // ранг
                 try {
-                    SetImgFromInet.set(lifeTimeStat.stats.rankScore.metadata.iconUrl, newRank_img_ChangeFrag)
+//                    SetImgFromInet.set(lifeTimeStat.stats.rankScore.metadata.iconUrl, newRank_img_ChangeFrag)
+                    newRank_img_ChangeFrag.setImageBitmap(ImageConvertor.byteToBitmap(lifeTimeStat.stats.rankScore.metadata.iconImg))
                 } catch (e: Exception) {
                 }
 
@@ -129,7 +131,8 @@ class ChangesFragment : Fragment() {
 
                 // ранг
                 try {
-                    SetImgFromInet.set(lifeTimeStat.stats.rankScore.metadata.iconUrl, oldRank_img_ChangeFrag)
+//                    SetImgFromInet.set(lifeTimeStat.stats.rankScore.metadata.iconUrl, oldRank_img_ChangeFrag)
+                    oldRank_img_ChangeFrag.setImageBitmap(ImageConvertor.byteToBitmap(lifeTimeStat.stats.rankScore.metadata.iconImg))
                 } catch (e: Exception) {
                 }
 

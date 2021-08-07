@@ -3,11 +3,11 @@ package by.wlad.koshelev.apexlegendstracker.UI.SearchFrag
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
-import by.wlad.koshelev.apexlegendstracker.GamerStats.etc.Segment
 import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStats
+import by.wlad.koshelev.apexlegendstracker.GamerStats.etc.Segment
 import by.wlad.koshelev.apexlegendstracker.R
+import by.wlad.koshelev.apexlegendstracker.UI.ImageConvertor
 import by.wlad.koshelev.apexlegendstracker.UI.CoolerView
-import by.wlad.koshelev.apexlegendstracker.UI.SetImgFromInet
 import kotlinx.android.synthetic.main.fragment_search.*
 
 object SearchFragListener {
@@ -45,11 +45,13 @@ object SearchFragListener {
         CoolerView.setNameWithColor(frag.activity as AppCompatActivity, frag.gamerName_tx_SerachFrag, curentStats)
 
         // аватар
-        SetImgFromInet.set(curentStats.data.platformInfo.avatarUrl, frag.avatar_img_SerachFrag)
+//        SetImgFromInet.set(curentStats.data.platformInfo.avatarUrl, frag.avatar_img_SerachFrag)
+        frag.avatar_img_SerachFrag.setImageBitmap(ImageConvertor.byteToBitmap(curentStats.data.platformInfo.avatarImg))
 
         // ранг
         try {
-            SetImgFromInet.set(lifeTimeStat.stats.rankScore.metadata.iconUrl, frag.rank_img_SerachFrag)
+//            SetImgFromInet.set(lifeTimeStat.stats.rankScore.metadata.iconUrl, frag.rank_img_SerachFrag)
+            frag.rank_img_SerachFrag.setImageBitmap(ImageConvertor.byteToBitmap(lifeTimeStat.stats.rankScore.metadata.iconImg))
         } catch (e: Exception) {
         }
 

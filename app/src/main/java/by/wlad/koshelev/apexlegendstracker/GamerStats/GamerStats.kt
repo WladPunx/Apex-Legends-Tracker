@@ -4,6 +4,7 @@ package by.wlad.koshelev.apexlegendstracker.GamerStats
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.*
 import by.wlad.koshelev.apexlegendstracker.GamerStats.etc.Data
+import by.wlad.koshelev.apexlegendstracker.UI.ImageConvertor
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
@@ -17,6 +18,20 @@ data class GamerStats(
     fun inz() {
         this.dateInfo = Date().time.toString()
         this.primKey = "${this.data.platformInfo.platformUserId}_${this.data.platformInfo.platformSlug}"
+
+        // аватар
+        try {
+            this.data.platformInfo.avatarImg = ImageConvertor.urlToByte(this.data.platformInfo.avatarUrl)
+        } catch (ex: Exception) {
+        }
+
+        // ранг
+        try {
+            this.data.segments[0].stats.rankScore.metadata.iconImg =
+                ImageConvertor.urlToByte(this.data.segments[0].stats.rankScore.metadata.iconUrl)
+        } catch (ex: Exception) {
+        }
+
     }
 }
 

@@ -12,8 +12,8 @@ import by.wlad.koshelev.apexlegendstracker.Arch.VM
 import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStats
 import by.wlad.koshelev.apexlegendstracker.R
 import by.wlad.koshelev.apexlegendstracker.UI.AlertDelete
+import by.wlad.koshelev.apexlegendstracker.UI.ImageConvertor
 import by.wlad.koshelev.apexlegendstracker.UI.CoolerView
-import by.wlad.koshelev.apexlegendstracker.UI.SetImgFromInet
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
@@ -79,11 +79,13 @@ class GamersAdapter(
 
 
         // аватар
-        SetImgFromInet.set(a.data.platformInfo.avatarUrl, holder.avatar)
+//        SetImgFromInet.set(a.data.platformInfo.avatarUrl, holder.avatar)
+        holder.avatar.setImageBitmap(ImageConvertor.byteToBitmap(a.data.platformInfo.avatarImg))
 
         // ранг
         try {
-            SetImgFromInet.set(a.data.segments[0].stats.rankScore.metadata.iconUrl, holder.rank)
+//            SetImgFromInet.set(a.data.segments[0].stats.rankScore.metadata.iconUrl, holder.rank)
+            holder.rank.setImageBitmap(ImageConvertor.byteToBitmap(a.data.segments[0].stats.rankScore.metadata.iconImg))
         } catch (e: Exception) {
         }
 
