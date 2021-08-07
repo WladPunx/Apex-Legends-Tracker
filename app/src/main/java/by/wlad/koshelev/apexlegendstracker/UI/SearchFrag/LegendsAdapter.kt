@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import by.wlad.koshelev.apexlegendstracker.GamerStats.etc.Segment
 import by.wlad.koshelev.apexlegendstracker.R
-import by.wlad.koshelev.apexlegendstracker.UI.SetImgFromInet
+import by.wlad.koshelev.apexlegendstracker.UI.ImageConvertor
 
 class LegendsAdapter(
     var app: AppCompatActivity,
@@ -43,7 +43,7 @@ class LegendsAdapter(
         val a: Segment = arr[position]
 
         // инока легенды
-        SetImgFromInet.set(a.metadata.imageUrl, holder.iconLigends)
+        ImageConvertor.setImgFromUrl(a.metadata.imageUrl, holder.iconLigends)
 
 
         // имя легенды
