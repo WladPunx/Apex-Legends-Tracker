@@ -52,9 +52,11 @@ object DrawerSettings {
         if (SharedPref.myShar.getBoolean(SharedPref.style, false)) {
             app.drawerToolBar_MainActiv.visibility = View.VISIBLE
             app.navigateLayout_MainActiv.visibility = View.GONE
+            app.HEADER_drawer_MainActiv.visibility = View.VISIBLE
         } else {
             app.drawerToolBar_MainActiv.visibility = View.GONE
             app.navigateLayout_MainActiv.visibility = View.VISIBLE
+            app.HEADER_drawer_MainActiv.visibility = View.GONE
         }
     }
 

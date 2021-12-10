@@ -28,7 +28,6 @@
                 android:gravity="center"
                 android:hint="@string/enter_nickName"
                 android:inputType="textPersonName"
-                android:text="daltoosh"
                 android:textSize="28sp"
                 android:theme="@style/editText"
                 app:backgroundTint="@color/editTextTint" />
