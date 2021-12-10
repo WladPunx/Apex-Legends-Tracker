@@ -101,10 +101,11 @@
         android:fillViewport="true">
 
         <LinearLayout
-            android:id="@+id/HEADER"
+            android:id="@+id/HEADER_drawer_MainActiv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <com.google.android.material.navigation.NavigationView
                 android:id="@+id/navView"

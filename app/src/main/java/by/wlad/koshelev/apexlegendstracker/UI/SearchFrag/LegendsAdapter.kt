@@ -43,7 +43,10 @@ class LegendsAdapter(
         val a: Segment = arr[position]
 
         // инока легенды
-        ImageConvertor.setImgFromUrl(a.metadata.imageUrl, holder.iconLigends)
+        try {
+            ImageConvertor.setImgFromUrl(a.metadata.imageUrl, holder.iconLigends)
+        } catch (e: Exception) {
+        }
 
 
         // имя легенды

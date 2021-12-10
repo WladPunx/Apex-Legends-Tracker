@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import by.wlad.koshelev.apexlegendstracker.Arch.SharedPref
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
+import by.wlad.koshelev.apexlegendstracker.DebugDo
 import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStatsDataBase
 import by.wlad.koshelev.apexlegendstracker.R
 import kotlinx.coroutines.MainScope
@@ -50,9 +51,10 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        //TODO временный блок!!
-        MainScope().launch {
-            VM.vm.getGms("origin", "tonyd221")
+        DebugDo {
+            MainScope().launch {
+                VM.vm.getGms("origin", "tonyd221")
+            }
         }
 
 
