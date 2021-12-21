@@ -22,4 +22,4 @@ local.properties
 /.idea/codeStyles/codeStyleConfig.xml
 /.idea/codeStyles/Project.xml
 /app/release/output-metadata.json
-/keystore.properties
+/.idea/keystore.properties
