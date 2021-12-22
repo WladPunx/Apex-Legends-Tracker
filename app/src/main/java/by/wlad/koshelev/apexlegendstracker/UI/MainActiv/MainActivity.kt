@@ -17,10 +17,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         // ШаредПреф
-        SharedPref.myShar = getSharedPreferences(SharedPref.APP_PREFERENCES, MODE_PRIVATE)
+        SharedPref.create(application)
 
         // настройка языка
-        val lang: String? = SharedPref.myShar.getString(SharedPref.lang, "ru")
+        val lang: String = SharedPref.getLang()
         val locale = Locale(lang)
         Locale.setDefault(locale)
         val configuration = Configuration()
