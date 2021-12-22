@@ -1,35 +1,40 @@
 package by.wlad.koshelev.apexlegendstracker.Arch
 
-import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStatsDataBase
+import android.app.Application
 import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStats
+import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStatsDataBase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class LocalModel {
+class LocalModel(
+    private val apl: Application
+) {
+
+    private val bd = GamerStatsDataBase.create(apl).getStatsDAO()
 
     suspend fun getLocalGamer(id: String): GamerStats = withContext(Dispatchers.IO) {
-        return@withContext GamerStatsDataBase.dao.getGamer(id)
+        return@withContext bd.getGamer(id)
     }
 
     suspend fun saveGamer(gamer: GamerStats) = withContext(Dispatchers.IO) {
         try {
-            GamerStatsDataBase.dao.addNew(gamer)
+            bd.addNew(gamer)
         } catch (ex: Exception) {
-            GamerStatsDataBase.dao.update(gamer)
+            bd.update(gamer)
         }
     }
 
     suspend fun getAllGamers(): MutableList<GamerStats> = withContext(Dispatchers.IO) {
-        return@withContext GamerStatsDataBase.dao.getAllGamers()
+        return@withContext bd.getAllGamers()
     }
 
     suspend fun deleteOneGamer(gamer: GamerStats) = withContext(Dispatchers.IO) {
-        GamerStatsDataBase.dao.deleteOne(gamer)
+        bd.deleteOne(gamer)
     }
 
 
-    suspend fun dellAllGamers() = withContext(Dispatchers.IO){
-        GamerStatsDataBase.dao.dellAll()
+    suspend fun dellAllGamers() = withContext(Dispatchers.IO) {
+        bd.dellAll()
     }
 
 

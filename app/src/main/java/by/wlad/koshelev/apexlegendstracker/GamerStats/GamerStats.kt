@@ -1,7 +1,7 @@
 package by.wlad.koshelev.apexlegendstracker.GamerStats
 
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Application
 import androidx.room.*
 import by.wlad.koshelev.apexlegendstracker.GamerStats.etc.Data
 import by.wlad.koshelev.apexlegendstracker.UI.ImageConvertor
@@ -64,19 +64,17 @@ abstract class GamerStatsDataBase : RoomDatabase() {
     abstract fun getStatsDAO(): StatsDAO
 
     companion object {
-        lateinit var app: AppCompatActivity
-
-        val bd: GamerStatsDataBase by lazy {
-            Room.databaseBuilder(
-                app,
-                GamerStatsDataBase::class.java,
-                "gamer_stats_bd_1"
-            )
-                .build()
-        }
-
-        val dao: StatsDAO by lazy {
-            bd.getStatsDAO()
+        private var bd: GamerStatsDataBase? = null
+        fun create(apl: Application): GamerStatsDataBase {
+            if (bd == null) {
+                bd = Room.databaseBuilder(
+                    apl,
+                    GamerStatsDataBase::class.java,
+                    "gamer_stats_bd_1"
+                )
+                    .build()
+            }
+            return bd!!
         }
     }
 }

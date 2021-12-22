@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProvider
 import by.wlad.koshelev.apexlegendstracker.Arch.SharedPref
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
 import by.wlad.koshelev.apexlegendstracker.DebugDo
-import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStatsDataBase
 import by.wlad.koshelev.apexlegendstracker.R
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -32,9 +31,6 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        // включение БД
-        GamerStatsDataBase.app = this
 
         // поключение ViewModel
         VM.vm = ViewModelProvider(this).get(VM::class.java)
