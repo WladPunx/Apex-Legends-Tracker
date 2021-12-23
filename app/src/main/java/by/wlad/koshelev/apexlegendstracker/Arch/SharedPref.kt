@@ -7,7 +7,7 @@ import android.content.SharedPreferences
 
 object SharedPref {
 
-    lateinit var myShar: SharedPreferences
+    private lateinit var myShar: SharedPreferences
     fun create(apl: Application) {
         myShar = apl.getSharedPreferences("SharedPref", Context.MODE_PRIVATE)
     }

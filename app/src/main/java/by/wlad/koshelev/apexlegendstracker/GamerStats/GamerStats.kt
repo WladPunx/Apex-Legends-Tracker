@@ -20,17 +20,14 @@ data class GamerStats(
         this.primKey = "${this.data.platformInfo.platformUserId}_${this.data.platformInfo.platformSlug}"
 
         // аватар
-        try {
-            this.data.platformInfo.avatarImg = ImageConvertor.urlToByte(this.data.platformInfo.avatarUrl)
-        } catch (ex: Exception) {
-        }
+        this.data.platformInfo.avatarImg = ImageConvertor.urlToByte(this.data.platformInfo.avatarUrl)
+
 
         // ранг
-        try {
-            this.data.segments[0].stats.rankScore.metadata.iconImg =
-                ImageConvertor.urlToByte(this.data.segments[0].stats.rankScore.metadata.iconUrl)
-        } catch (ex: Exception) {
-        }
+
+        this.data.segments[0].stats.rankScore.metadata.iconImg =
+            ImageConvertor.urlToByte(this.data.segments[0].stats.rankScore.metadata.iconUrl)
+
 
     }
 }
