@@ -67,7 +67,7 @@ abstract class GamerStatsDataBase : RoomDatabase() {
                 bd = Room.databaseBuilder(
                     apl,
                     GamerStatsDataBase::class.java,
-                    "gamer_stats_bd_1"
+                    "gamer_stats_bd_3"
                 )
                     .build()
             }
