@@ -2,7 +2,6 @@ package by.wlad.koshelev.apexlegendstracker.UI.SearchFrag
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
 import by.wlad.koshelev.apexlegendstracker.DebugDo
+import by.wlad.koshelev.apexlegendstracker.LogError
+import by.wlad.koshelev.apexlegendstracker.LogInfo
 import by.wlad.koshelev.apexlegendstracker.R
 import by.wlad.koshelev.apexlegendstracker.UI.CoolerView
 import kotlinx.android.synthetic.main.fragment_search.*
@@ -138,7 +139,8 @@ class SearchFragment : Fragment() {
                                 StatsLayout_SearcgFrag.alpha = 1f
                                 StatsLayout_SearcgFrag.visibility = View.GONE
                             } catch (ex: Exception) {
-                                Log.e("!!ERROR!!", "${ex}  косяк задержки анимации ")
+                                LogInfo("косяк задержки анимации")
+                                LogError(ex)
                             }
 
                         }

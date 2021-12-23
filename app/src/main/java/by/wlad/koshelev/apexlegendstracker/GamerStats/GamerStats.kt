@@ -1,7 +1,7 @@
 package by.wlad.koshelev.apexlegendstracker.GamerStats
 
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Application
 import androidx.room.*
 import by.wlad.koshelev.apexlegendstracker.GamerStats.etc.Data
 import by.wlad.koshelev.apexlegendstracker.UI.ImageConvertor
@@ -20,17 +20,14 @@ data class GamerStats(
         this.primKey = "${this.data.platformInfo.platformUserId}_${this.data.platformInfo.platformSlug}"
 
         // аватар
-        try {
-            this.data.platformInfo.avatarImg = ImageConvertor.urlToByte(this.data.platformInfo.avatarUrl)
-        } catch (ex: Exception) {
-        }
+        this.data.platformInfo.avatarImg = ImageConvertor.urlToByte(this.data.platformInfo.avatarUrl)
+
 
         // ранг
-        try {
-            this.data.segments[0].stats.rankScore.metadata.iconImg =
-                ImageConvertor.urlToByte(this.data.segments[0].stats.rankScore.metadata.iconUrl)
-        } catch (ex: Exception) {
-        }
+
+        this.data.segments[0].stats.rankScore.metadata.iconImg =
+            ImageConvertor.urlToByte(this.data.segments[0].stats.rankScore.metadata.iconUrl)
+
 
     }
 }
@@ -64,19 +61,17 @@ abstract class GamerStatsDataBase : RoomDatabase() {
     abstract fun getStatsDAO(): StatsDAO
 
     companion object {
-        lateinit var app: AppCompatActivity
-
-        val bd: GamerStatsDataBase by lazy {
-            Room.databaseBuilder(
-                app,
-                GamerStatsDataBase::class.java,
-                "gamer_stats_bd_1"
-            )
-                .build()
-        }
-
-        val dao: StatsDAO by lazy {
-            bd.getStatsDAO()
+        private var bd: GamerStatsDataBase? = null
+        fun create(apl: Application): GamerStatsDataBase {
+            if (bd == null) {
+                bd = Room.databaseBuilder(
+                    apl,
+                    GamerStatsDataBase::class.java,
+                    "gamer_stats_bd_3"
+                )
+                    .build()
+            }
+            return bd!!
         }
     }
 }

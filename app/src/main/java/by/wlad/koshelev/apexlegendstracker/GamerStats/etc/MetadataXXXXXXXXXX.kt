@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 
 data class MetadataXXXXXXXXXX(
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-    var iconImg: ByteArray,
+    var iconImg: ByteArray?,
     @SerializedName("iconUrl")
     var iconUrl: String,
     @SerializedName("rankName")

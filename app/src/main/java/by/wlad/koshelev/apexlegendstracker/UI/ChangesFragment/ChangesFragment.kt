@@ -13,8 +13,8 @@ import by.wlad.koshelev.apexlegendstracker.Arch.VM
 import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStats
 import by.wlad.koshelev.apexlegendstracker.GamerStats.etc.Segment
 import by.wlad.koshelev.apexlegendstracker.R
-import by.wlad.koshelev.apexlegendstracker.UI.ImageConvertor
 import by.wlad.koshelev.apexlegendstracker.UI.CoolerView
+import by.wlad.koshelev.apexlegendstracker.UI.ImageConvertor
 import kotlinx.android.synthetic.main.fragment_changes.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch

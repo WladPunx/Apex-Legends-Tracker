@@ -74,7 +74,7 @@ class ListsFragment : Fragment() {
              * очистка всей БД
              */
             R.id.clearBD -> {
-               AlertDelete.dellAllGamers(activity as AppCompatActivity)
+                AlertDelete.dellAllGamers(activity as AppCompatActivity)
             }
             /**
              * изменение стиля
@@ -82,25 +82,17 @@ class ListsFragment : Fragment() {
             R.id.main_layout_set -> {
                 DrawerSettings.setStyle(activity as AppCompatActivity)
             }
-
-
             /**
              * выбор языка
              */
             // русский
             R.id.rusLang -> {
-                SharedPref.myShar
-                    .edit()
-                    .putString(SharedPref.lang, "ru")
-                    .apply()
+                SharedPref.setLang("ru")
                 if (activity is MainActivity) (activity as MainActivity).myRestart()
             }
             // английский
             R.id.engLang -> {
-                SharedPref.myShar
-                    .edit()
-                    .putString(SharedPref.lang, "en")
-                    .apply()
+                SharedPref.setLang("en")
                 if (activity is MainActivity) (activity as MainActivity).myRestart()
             }
 

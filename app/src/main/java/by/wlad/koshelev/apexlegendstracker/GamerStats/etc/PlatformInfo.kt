@@ -8,7 +8,7 @@ data class PlatformInfo(
 //    @SerializedName("additionalParameters")
 //    var additionalParameters: Any?,
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-    var avatarImg: ByteArray,
+    var avatarImg: ByteArray?,
     @SerializedName("avatarUrl")
     var avatarUrl: String,
     @SerializedName("platformSlug")

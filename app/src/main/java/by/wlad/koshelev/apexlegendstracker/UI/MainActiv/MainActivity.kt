@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProvider
 import by.wlad.koshelev.apexlegendstracker.Arch.SharedPref
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
 import by.wlad.koshelev.apexlegendstracker.DebugDo
-import by.wlad.koshelev.apexlegendstracker.GamerStats.GamerStatsDataBase
 import by.wlad.koshelev.apexlegendstracker.R
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -18,10 +17,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         // ШаредПреф
-        SharedPref.myShar = getSharedPreferences(SharedPref.APP_PREFERENCES, MODE_PRIVATE)
+        SharedPref.create(application)
 
         // настройка языка
-        val lang: String? = SharedPref.myShar.getString(SharedPref.lang, "ru")
+        val lang: String = SharedPref.getLang()
         val locale = Locale(lang)
         Locale.setDefault(locale)
         val configuration = Configuration()
@@ -32,9 +31,6 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        // включение БД
-        GamerStatsDataBase.app = this
 
         // поключение ViewModel
         VM.vm = ViewModelProvider(this).get(VM::class.java)

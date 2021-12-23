@@ -49,7 +49,7 @@ object DrawerSettings {
      * проверка стиля
      */
     fun checkStyle(app: MainActivity) {
-        if (SharedPref.myShar.getBoolean(SharedPref.style, false)) {
+        if (SharedPref.getStyle()) {
             app.drawerToolBar_MainActiv.visibility = View.VISIBLE
             app.navigateLayout_MainActiv.visibility = View.GONE
             app.HEADER_drawer_MainActiv.visibility = View.VISIBLE
@@ -64,12 +64,9 @@ object DrawerSettings {
      * установка стиля
      */
     fun setStyle(cont: AppCompatActivity) {
-        var a: Boolean = SharedPref.myShar.getBoolean(SharedPref.style, false)
+        var a: Boolean = SharedPref.getStyle()
         a = !a
-        SharedPref.myShar
-            .edit()
-            .putBoolean(SharedPref.style, a)
-            .apply()
+        SharedPref.setStyle(a)
         if (cont is MainActivity) checkStyle(cont)
     }
 }

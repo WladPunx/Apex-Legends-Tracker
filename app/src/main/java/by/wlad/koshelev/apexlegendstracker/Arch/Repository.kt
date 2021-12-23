@@ -8,7 +8,7 @@ import kotlinx.coroutines.withContext
 class Repository(private val apl: Application) {
 
 
-    private val localModel: LocalModel = LocalModel()
+    private val localModel: LocalModel = LocalModel(apl)
     private val remoteModel: RemoteModel = RemoteModel(apl)
 
 
