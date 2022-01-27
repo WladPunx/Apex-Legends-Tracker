@@ -19,6 +19,7 @@ data class GamerStats(
         this.dateInfo = Date().time.toString()
         this.primKey = "${this.data.platformInfo.platformUserId}_${this.data.platformInfo.platformSlug}"
 
+
         // аватар
         this.data.platformInfo.avatarImg = ImageConvertor.urlToByte(this.data.platformInfo.avatarUrl)
 
