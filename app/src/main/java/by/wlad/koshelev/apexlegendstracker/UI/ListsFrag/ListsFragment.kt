@@ -6,12 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import by.wlad.koshelev.apexlegendstracker.Arch.SharedPref
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
 import by.wlad.koshelev.apexlegendstracker.R
 import by.wlad.koshelev.apexlegendstracker.UI.AlertDelete
 import by.wlad.koshelev.apexlegendstracker.UI.MainActiv.DrawerSettings
 import by.wlad.koshelev.apexlegendstracker.UI.MainActiv.MainActivity
+import by.wlad.koshelev.apexlegendstracker.sharedpref.SharedPref
 import kotlinx.android.synthetic.main.fragment_lists.*
 
 
@@ -87,12 +87,12 @@ class ListsFragment : Fragment() {
              */
             // русский
             R.id.rusLang -> {
-                SharedPref.setLang("ru")
+                SharedPref(requireActivity().application).lang = "ru"
                 if (activity is MainActivity) (activity as MainActivity).myRestart()
             }
             // английский
             R.id.engLang -> {
-                SharedPref.setLang("en")
+                SharedPref(requireActivity().application).lang = "en"
                 if (activity is MainActivity) (activity as MainActivity).myRestart()
             }
 

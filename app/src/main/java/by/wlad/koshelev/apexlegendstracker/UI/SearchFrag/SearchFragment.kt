@@ -10,11 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
-import by.wlad.koshelev.apexlegendstracker.DebugDo
-import by.wlad.koshelev.apexlegendstracker.LogError
-import by.wlad.koshelev.apexlegendstracker.LogInfo
 import by.wlad.koshelev.apexlegendstracker.R
 import by.wlad.koshelev.apexlegendstracker.UI.CoolerView
+import by.wlad.koshelev.apexlegendstracker.utils.debugDo
+import by.wlad.koshelev.apexlegendstracker.utils.logError
+import by.wlad.koshelev.apexlegendstracker.utils.logInfo
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
@@ -45,7 +45,7 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        DebugDo {
+        debugDo {
             nickName_edt_SearchFrag.setText("daltoosh")
         }
 
@@ -139,8 +139,8 @@ class SearchFragment : Fragment() {
                                 StatsLayout_SearcgFrag.alpha = 1f
                                 StatsLayout_SearcgFrag.visibility = View.GONE
                             } catch (ex: Exception) {
-                                LogInfo("косяк задержки анимации")
-                                LogError(ex)
+                                logInfo("косяк задержки анимации")
+                                ex.logError()
                             }
 
                         }

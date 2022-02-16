@@ -3,7 +3,7 @@ package by.wlad.koshelev.apexlegendstracker.UI
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.widget.ImageView
-import by.wlad.koshelev.apexlegendstracker.LogError
+import by.wlad.koshelev.apexlegendstracker.utils.logError
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,7 +18,7 @@ object ImageConvertor {
             val mIcon_val = BitmapFactory.decodeStream(newurl.openConnection().getInputStream())
             return mIcon_val
         } catch (ex: Exception) {
-            LogError(ex)
+            ex.logError()
             return null
         }
     }
@@ -31,7 +31,7 @@ object ImageConvertor {
             val image = stream.toByteArray()
             return image
         } catch (ex: Exception) {
-            LogError(ex)
+            ex.logError()
             return null
         }
     }
@@ -42,7 +42,7 @@ object ImageConvertor {
     }
 
 
-    fun byteToBitmap(myByte: ByteArray?): Bitmap {
+    fun byteToBitmap(myByte: ByteArray?): Bitmap? {
         return BitmapFactory.decodeByteArray(myByte, 0, myByte?.size ?: 0)
     }
 

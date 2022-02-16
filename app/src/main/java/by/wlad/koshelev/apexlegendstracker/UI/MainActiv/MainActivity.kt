@@ -5,10 +5,10 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import by.wlad.koshelev.apexlegendstracker.Arch.SharedPref
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
-import by.wlad.koshelev.apexlegendstracker.DebugDo
 import by.wlad.koshelev.apexlegendstracker.R
+import by.wlad.koshelev.apexlegendstracker.sharedpref.SharedPref
+import by.wlad.koshelev.apexlegendstracker.utils.debugDo
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import java.util.*
@@ -16,11 +16,8 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        // ШаредПреф
-        SharedPref.create(application)
-
         // настройка языка
-        val lang: String = SharedPref.getLang()
+        val lang: String = SharedPref(application).lang
         val locale = Locale(lang)
         Locale.setDefault(locale)
         val configuration = Configuration()
@@ -47,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        DebugDo {
+        debugDo {
             MainScope().launch {
                 VM.vm.getGms("origin", "tonyd221")
             }

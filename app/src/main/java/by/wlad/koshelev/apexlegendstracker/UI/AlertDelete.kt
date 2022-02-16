@@ -1,6 +1,5 @@
 package by.wlad.koshelev.apexlegendstracker.UI
 
-import android.app.AlertDialog
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import by.wlad.koshelev.apexlegendstracker.Arch.VM
@@ -12,7 +11,7 @@ import kotlinx.coroutines.launch
 object AlertDelete {
 
     fun deleteOneGamer(gamer: GamerStats, app: AppCompatActivity) {
-        AlertDialog.Builder(app)
+        CustomDialog.alertDialog(app)
             .setCancelable(false)
             .setTitle(app.getString(R.string.suuure))
             .setMessage("${app.getString(R.string.deleteOneGamer)} ${gamer.data.platformInfo.platformUserId} ?")
@@ -33,7 +32,7 @@ object AlertDelete {
 
 
     fun dellAllGamers(app: AppCompatActivity) {
-        AlertDialog.Builder(app)
+        CustomDialog.alertDialog(app)
             .setCancelable(false)
             .setTitle(app.getString(R.string.suuure))
             .setMessage(app.getString(R.string.deleteAllGamers))

@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import by.wlad.koshelev.apexlegendstracker.Arch.SharedPref
 import by.wlad.koshelev.apexlegendstracker.R
+import by.wlad.koshelev.apexlegendstracker.sharedpref.SharedPref
 import kotlinx.android.synthetic.main.activity_main.*
 
 object DrawerSettings {
@@ -49,7 +49,7 @@ object DrawerSettings {
      * проверка стиля
      */
     fun checkStyle(app: MainActivity) {
-        if (SharedPref.getStyle()) {
+        if (SharedPref(app.application).style) {
             app.drawerToolBar_MainActiv.visibility = View.VISIBLE
             app.navigateLayout_MainActiv.visibility = View.GONE
             app.HEADER_drawer_MainActiv.visibility = View.VISIBLE
@@ -64,9 +64,8 @@ object DrawerSettings {
      * установка стиля
      */
     fun setStyle(cont: AppCompatActivity) {
-        var a: Boolean = SharedPref.getStyle()
-        a = !a
-        SharedPref.setStyle(a)
+        val sharedPref = SharedPref(cont.application)
+        sharedPref.style = !sharedPref.style
         if (cont is MainActivity) checkStyle(cont)
     }
 }
