@@ -11,6 +11,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 object DrawerSettings {
 
+    2222
+
 
     /**
      * настройки Дровера
