@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
 
         1111
 
+        11213
+
         // настройка языка
         val lang: String = SharedPref(application).lang
         val locale = Locale(lang)
