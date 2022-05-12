@@ -18,6 +18,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         bfg
+
+        ftr1
+
         // настройка языка
         val lang: String = SharedPref(application).lang
         val locale = Locale(lang)
