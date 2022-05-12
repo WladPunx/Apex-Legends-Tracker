@@ -8,6 +8,8 @@ import by.wlad.koshelev.apexlegendstracker.R
 
 object CustomDialog {
 
+
+    bfgg
     fun alertDialog(context: Context, style: Int = R.style.AlertDialog) = AlertDialog.Builder(context, style)
 
 }
