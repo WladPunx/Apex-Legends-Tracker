@@ -8,8 +8,6 @@ import by.wlad.koshelev.apexlegendstracker.R
 
 object CustomDialog {
 
-    hotbugfix
-
     fun alertDialog(context: Context, style: Int = R.style.AlertDialog) = AlertDialog.Builder(context, style)
 
 }
