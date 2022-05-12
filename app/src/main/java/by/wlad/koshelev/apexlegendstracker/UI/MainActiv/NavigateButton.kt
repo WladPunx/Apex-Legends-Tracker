@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 /**
  * КНОПКИ ОСНОВНОГО УПРАВЛЕНИЯ ФРАГМЕНТАМИ
  */
+
 object NavigateButton {
 
 
