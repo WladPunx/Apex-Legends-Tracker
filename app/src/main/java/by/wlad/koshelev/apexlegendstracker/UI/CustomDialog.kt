@@ -6,6 +6,8 @@ import android.content.Context
 
 import by.wlad.koshelev.apexlegendstracker.R
 
+
+
 object CustomDialog {
 
 
