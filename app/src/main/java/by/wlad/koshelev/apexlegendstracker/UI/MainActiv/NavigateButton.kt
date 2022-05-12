@@ -12,6 +12,8 @@ import kotlinx.android.synthetic.main.activity_main.*
  */
 object NavigateButton {
 
+    2222
+
     // контекст, который инициализируется и будет использоваться в других функциях
     private lateinit var app: MainActivity
 
